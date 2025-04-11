@@ -1,0 +1,15 @@
+components:
+- layout_properties: {column: JKSDUP}
+  name: exercise_details_1
+  properties: {}
+  type: form:MainDisplay.RowTemplate1.ExerciseDetails
+- layout_properties: {column: VJQQOR}
+  name: set_details_1
+  properties: {}
+  type: form:MainDisplay.RowTemplate1.SetDetails
+- layout_properties: {column: OJLQEN}
+  name: set_details_2
+  properties: {}
+  type: form:MainDisplay.RowTemplate1.SetDetails
+container: {type: DataRowPanel}
+is_package: true
