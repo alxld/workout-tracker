@@ -4,12 +4,14 @@ components:
   properties: {}
   type: form:MainDisplay.RowTemplate1.ExerciseDetails
 - layout_properties: {column: VJQQOR}
-  name: set_details_1
+  name: set_details_aaron
   properties: {}
   type: form:MainDisplay.RowTemplate1.SetDetails
 - layout_properties: {column: OJLQEN}
-  name: set_details_2
+  name: set_details_weez
   properties: {}
   type: form:MainDisplay.RowTemplate1.SetDetails
-container: {type: DataRowPanel}
+container:
+  data_bindings: []
+  type: DataRowPanel
 is_package: true

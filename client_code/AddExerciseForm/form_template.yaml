@@ -8,7 +8,7 @@ components:
   properties: {text: 'Select Body Part:'}
   type: Label
 - layout_properties: {grid_position: 'LLMLWL,KQYLKO'}
-  name: drop_down_1
+  name: body_part_drop_down
   properties:
     items: [Pecs, Front Delts, Lats, Glutes]
   type: DropDown
@@ -17,9 +17,27 @@ components:
   properties: {text: 'Select Exercise:'}
   type: Label
 - layout_properties: {grid_position: 'PEUAKZ,ZDHSUS'}
-  name: drop_down_2
+  name: exercise_drop_down
   properties:
     items: [Bench Press, Bench Press Again, More Bench Press]
+  type: DropDown
+- layout_properties: {grid_position: 'IUDXUB,IOCEOC'}
+  name: label_3
+  properties: {text: Select Aaron's Exercise Type}
+  type: Label
+- layout_properties: {grid_position: 'IUDXUB,VYSNMB'}
+  name: aaron_exercise_type_drop_down
+  properties:
+    items: [High Rep, Med Rep, High Weight]
+  type: DropDown
+- layout_properties: {grid_position: 'KXQPCX,UGTFDQ'}
+  name: label_4
+  properties: {text: Select Weez's Exercise Type}
+  type: Label
+- layout_properties: {grid_position: 'KXQPCX,RIJFIR'}
+  name: weez_exercise_type_drop_down
+  properties:
+    items: [High Rep, Med Rep, High Weight]
   type: DropDown
 container: {type: ColumnPanel}
 is_package: true

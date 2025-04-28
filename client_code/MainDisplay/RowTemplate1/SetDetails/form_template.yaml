@@ -8,11 +8,11 @@ components:
     name: data_grid_1
     properties:
       columns:
-      - {data_key: column_1, expand: false, id: JKSDUP, title: 'Set #', width: 78}
-      - {data_key: column_2, id: VJQQOR, title: Weight}
-      - {data_key: column_3, id: OJLQEN, title: Reps}
-      - {data_key: column_4, id: FBFUPR, title: Prev Weight}
-      - {data_key: column_5, id: FNBGZU, title: Prev Reps}
+      - {data_key: setNum, expand: false, id: JKSDUP, title: 'Set #', width: 78}
+      - {data_key: weight, id: VJQQOR, title: Weight}
+      - {data_key: reps, id: OJLQEN, title: Reps}
+      - {data_key: prevWeight, id: FBFUPR, title: Prev Weight}
+      - {data_key: prevReps, id: FNBGZU, title: Prev Reps}
     type: DataGrid
   layout_properties: {full_width_row: true, grid_position: 'OSECHP,LCRAIG'}
   name: column_panel_1
