@@ -1,0 +1,15 @@
+components:
+- layout_properties: {grid_position: 'UZYNXP,JUKARD'}
+  name: body_parts_button
+  properties: {role: raised, text: Body Parts}
+  type: Button
+- layout_properties: {grid_position: 'UZYNXP,YGLEVU'}
+  name: exercises_button
+  properties: {role: raised, text: Exercises}
+  type: Button
+- layout_properties: {grid_position: 'JJYXMU,XEKRVK'}
+  name: exercies_types_button
+  properties: {role: raised, text: Exercise Types}
+  type: Button
+container: {type: ColumnPanel}
+is_package: true

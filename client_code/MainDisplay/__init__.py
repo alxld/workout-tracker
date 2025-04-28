@@ -1,5 +1,6 @@
 from ._anvil_designer import MainDisplayTemplate
 from ..AddExerciseForm import AddExerciseForm
+from ..UpdateDatabaseForm import UpdateDatabaseForm
 from anvil import *
 
 class Exercise:
@@ -88,4 +89,7 @@ class MainDisplay(MainDisplayTemplate):
       self._exercises.append(this_ex)
       self.repeating_panel_1.items = self._exercises
     #open_form('AddExerciseForm', show_as_diaklog=True)
-    
+
+  def update_db_button_click(self, **event_args):
+    ud_form = UpdateDatabaseForm()
+    result = alert(title="Update Database", content=ud_form)
