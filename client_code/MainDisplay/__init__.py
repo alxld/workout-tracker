@@ -15,5 +15,6 @@ class MainDisplay(MainDisplayTemplate):
     self._exercises = []
 
   def add_exercise_button_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass
+    # Pull up AddExerciseForm to get new exercise details
+    open_form('AddExerciseForm', show_as_dialog=True)
+    
