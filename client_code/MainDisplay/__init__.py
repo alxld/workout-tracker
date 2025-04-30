@@ -2,6 +2,7 @@ from ._anvil_designer import MainDisplayTemplate
 from ..AddExerciseForm import AddExerciseForm
 from ..UpdateDatabaseForm import UpdateDatabaseForm
 from anvil import *
+import anvil.server
 
 class Exercise:
   def __init__(self, name, body_part):
@@ -73,6 +74,11 @@ class MainDisplay(MainDisplayTemplate):
     #self._exercises.append(Exercise("blah", "no part"))
     self.repeating_panel_1.items = self._exercises
 
+    #self.body_parts = anvil.server.call("get_body_parts")
+    #print(self.body_parts)
+
+  
+  
   def add_exercise_button_click(self, **event_args):
     # Pull up AddExerciseForm to get new exercise details
     aef = AddExerciseForm()
