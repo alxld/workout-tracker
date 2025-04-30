@@ -7,7 +7,8 @@ components:
   name: label_1
   properties: {text: 'Select Body Part:'}
   type: Label
-- layout_properties: {grid_position: 'LLMLWL,KQYLKO'}
+- event_bindings: {change: body_part_drop_down_change}
+  layout_properties: {grid_position: 'LLMLWL,KQYLKO'}
   name: body_part_drop_down
   properties:
     items: [Pecs, Front Delts, Lats, Glutes]

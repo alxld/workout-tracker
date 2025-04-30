@@ -9,8 +9,17 @@ class AddExerciseForm(AddExerciseFormTemplate):
     self.init_components(**properties)
 
     self.body_part_drop_down.items = anvil.server.call("get_body_parts")
-    self.exercises = anvil.server.call("get_exercise_for_body_part", "Back")
+
+    bp = self.body_part_drop_down.selected_value
+    exercises = anvil.server.call("get_exercise_for_body_part", bp)
+    self.exercise_drop_down.items = exercises
+
 
   def cancel_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     pass
+
+  def body_part_drop_down_change(self, **event_args):
+    bp = self.body_part_drop_down.selected_value
+    exercises = anvil.server.call("get_exercise_for_body_part", bp)
+    self.exercise_drop_down.items = exercises
