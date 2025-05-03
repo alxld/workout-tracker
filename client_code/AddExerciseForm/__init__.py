@@ -14,6 +14,9 @@ class AddExerciseForm(AddExerciseFormTemplate):
     exercises = anvil.server.call("get_exercise_for_body_part", bp)
     self.exercise_drop_down.items = exercises
 
+    workout_type_names = anvil.server.call("get_workout_type_names")
+    self.aaron_exercise_type_drop_down.items = workout_type_names
+    self.weez_exercise_type_drop_down.items  = workout_type_names
 
   def cancel_button_click(self, **event_args):
     """This method is called when the button is clicked"""
