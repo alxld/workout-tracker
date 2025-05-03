@@ -24,3 +24,27 @@ class ExerciseDetails(ExerciseDetailsTemplate):
 
     self.parent.parent.items[idx].addSet("Weez")
     self.parent.parent.items = self.parent.parent.items
+
+  def aaron_delete_set_button_click(self, **event_args):
+    for idx in range(len(self.parent.parent.items)):
+      if self.parent.item == self.parent.parent.items[idx]:
+        break
+        
+    self.parent.parent.items[idx].removeSet("Aaron")
+    self.parent.parent.items = self.parent.parent.items
+
+  def weez_delete_set_button_click(self, **event_args):
+    for idx in range(len(self.parent.parent.items)):
+      if self.parent.item == self.parent.parent.items[idx]:
+        break
+        
+    self.parent.parent.items[idx].removeSet("Weez")
+    self.parent.parent.items = self.parent.parent.items
+
+  def remove_exercise_button_click(self, **event_args):
+    for idx in range(len(self.parent.parent.items)):
+      if self.parent.item == self.parent.parent.items[idx]:
+        break
+
+    del self.parent.parent.items[idx]
+    self.parent.parent.items = self.parent.parent.items
