@@ -2,6 +2,7 @@ from ._anvil_designer import MainDisplayTemplate
 from ..AddExerciseForm import AddExerciseForm
 from ..UpdateDatabaseForm import UpdateDatabaseForm
 from ..Exercise import Exercise, Set
+from ..AddWorkoutForm import AddWorkoutForm
 from anvil import *
 import anvil.server
  
@@ -39,3 +40,16 @@ class MainDisplay(MainDisplayTemplate):
   def update_db_button_click(self, **event_args):
     ud_form = UpdateDatabaseForm()
     result = alert(title="Update Database", content=ud_form)
+
+  def new_workout_click(self, **event_args):
+    global workout_id
+    awf = AddWorkoutForm()
+    awf.workout_notes_text_area.text = anvil.server.call("get_workout_notes", awf.add_workout_date_picker.date)
+    result = alert(title="Add Workout", content=awf, large=True, buttons=[("OK", True), ("Cancel", False)])
+
+    if result:
+      workout_date = awf.add_workout_date_picker.date
+      workout_notes = awf.workout_notes_text_area.text
+
+      workout_id = anvil.server.call("add_workout", workout_date, workout_notes)
+      print(f"Workout ID: {workout_id}")

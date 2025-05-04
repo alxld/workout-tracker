@@ -1,0 +1,20 @@
+components:
+- layout_properties: {grid_position: 'GECLNQ,LDRSRH XNUDXX,VCHIOI'}
+  name: label_1
+  properties: {align: right, text: 'Date:'}
+  type: Label
+- layout_properties: {grid_position: 'GECLNQ,LDRSRH MVYWPI,SVHFUH'}
+  name: label_2
+  properties: {align: right, text: 'Notes:'}
+  type: Label
+- data_bindings: []
+  layout_properties: {grid_position: 'GECLNQ,BJMNKP AKZQWM,XYPMVB'}
+  name: add_workout_date_picker
+  properties: {placeholder: ''}
+  type: DatePicker
+- layout_properties: {grid_position: 'GECLNQ,BJMNKP KQUUNY,ETRXUS'}
+  name: workout_notes_text_area
+  properties: {}
+  type: TextArea
+container: {type: ColumnPanel}
+is_package: true

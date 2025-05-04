@@ -27,9 +27,10 @@ components:
   properties: {}
   type: ColumnPanel
 - components:
-  - layout_properties: {}
+  - event_bindings: {click: new_workout_click}
+    layout_properties: {}
     name: button_1
-    properties: {background: 'theme:Gray 200', role: raised, text: New Workout}
+    properties: {background: 'theme:Gray 200', role: raised, text: Edit/New Workout}
     type: Button
   layout_properties: {slot: nav-right}
   name: navbar_links
