@@ -26,7 +26,12 @@ components:
   name: content_panel
   properties: {}
   type: ColumnPanel
-- layout_properties: {slot: nav-right}
+- components:
+  - layout_properties: {}
+    name: button_1
+    properties: {background: 'theme:Gray 200', role: raised, text: New Workout}
+    type: Button
+  layout_properties: {slot: nav-right}
   name: navbar_links
   properties: {}
   type: FlowPanel
