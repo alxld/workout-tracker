@@ -1,5 +1,6 @@
 from ._anvil_designer import ExerciseDetailsTemplate
 from anvil import *
+import anvil.server
 
 
 class ExerciseDetails(ExerciseDetailsTemplate):
@@ -46,5 +47,8 @@ class ExerciseDetails(ExerciseDetailsTemplate):
       if self.parent.item == self.parent.parent.items[idx]:
         break
 
+    ex = self.parent.parent.items[idx]
+    anvil.server.call("remove_exercise_from_workout", ex._aaron_workout_exercise_id)
+    anvil.server.call("remove_exercise_from_workout", ex._weez_workout_exercise_id)
     del self.parent.parent.items[idx]
     self.parent.parent.items = self.parent.parent.items

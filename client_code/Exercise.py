@@ -43,7 +43,14 @@ class Exercise:
     return newset
 
   def removeSet(self, user):
+    if user == "Aaron":
+      wid = self._aaron_workout_exercise_id
+    else:
+      wid = self._weez_workout_exercise_id
+
+    set_id = self._sets[user][-1].set_id
     self._sets[user] = self._sets[user][:-1]
+    anvil.server.call("remove_set_from_exercise", set_id)
 
   @property
   def aaron_exercise_type(self):
