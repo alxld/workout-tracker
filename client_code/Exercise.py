@@ -8,12 +8,14 @@ import anvil.server
 #
 
 class Exercise:
-  def __init__(self, name, body_part):
+  def __init__(self, name, body_part, aaron_workout_exercise_id, weez_workout_exercise_id):
     self._name = name
     self._body_part = body_part
     self._exerciseType = {"Aaron": "UNKNOWN", "Weez": "UNKNOWN"}
     self._sets = {"Aaron": [], "Weez": []}
     self._defaultSets = 3
+    self._aaron_workout_exercise_id = aaron_workout_exercise_id
+    self._weez_workout_exercise_id = weez_workout_exercise_id
 
     for i in range(self._defaultSets):
       self.addSet('Aaron')
@@ -30,7 +32,13 @@ class Exercise:
     raise Exception(f"{key} not found in Exercise object")
 
   def addSet(self, user):
-    newset = Set(len(self._sets[user])+1, 0, 0)
+    if user == "Aaron":
+      wid = self._aaron_workout_exercise_id
+    else:
+      wid = self._weez_workout_exercise_id
+    set_id = anvil.server.call("add_set_to_exercise", wid, len(self._sets[user])+1)
+    prev_weight, prev_reps = anvil.server.call("get_previous_set_weight_reps", set_id)
+    newset = Set(len(self._sets[user])+1, prev_weight, prev_reps, set_id)
     self._sets[user].append(newset)
     return newset
 
@@ -54,12 +62,13 @@ class Exercise:
     self._exerciseType['Weez'] = type
 
 class Set:
-  def __init__(self, setNum, weight, reps):
+  def __init__(self, setNum, prev_weight, prev_reps, set_id):
     self.setNum = setNum
-    self.weight = weight
-    self.reps = reps
-    self.prevWeight = 0
-    self.prevReps = 0
+    self.weight = 0
+    self.reps = 0
+    self.prevWeight = prev_weight
+    self.prevReps = prev_reps
+    self.set_id = set_id
 
   def __getitem__(self, key):
     if key == "setNum":

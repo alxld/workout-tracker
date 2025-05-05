@@ -29,20 +29,31 @@ class MainDisplay(MainDisplayTemplate):
     exercise = aef.exercise_drop_down.selected_value
 
     if result:
-      this_ex = Exercise(exercise, body_part)
-      this_ex.aaron_exercise_type = aef.aaron_exercise_type_drop_down.selected_value
-      this_ex.weez_exercise_type = aef.weez_exercise_type_drop_down.selected_value
+      global workout_id
+
+      aaron_exercise_type = aef.aaron_exercise_type_drop_down.selected_value
+      weez_exercise_type = aef.weez_exercise_type_drop_down.selected_value
+      
+      aaron_workout_exercise_id = anvil.server.call("add_exercise_to_workout", workout_id, exercise, aaron_exercise_type, len(self._exercises), "Aaron")
+      print(f"Aaron's Workout Exercise ID: {aaron_workout_exercise_id}")
+      weez_workout_exercise_id = anvil.server.call("add_exercise_to_workout", workout_id, exercise, weez_exercise_type, len(self._exercises), "Weez")
+      print(f"Weez's Workout Exercise ID: {weez_workout_exercise_id}")
+
+
+      this_ex = Exercise(exercise, body_part, aaron_workout_exercise_id, weez_workout_exercise_id)
+      this_ex.aaron_exercise_type = aaron_exercise_type
+      this_ex.weez_exercise_type = weez_exercise_type
       #this_ex.addSet("Aaron")
       self._exercises.append(this_ex)
       self.repeating_panel_1.items = self._exercises
-    #open_form('AddExerciseForm', show_as_diaklog=True)
-
+      
   def update_db_button_click(self, **event_args):
     ud_form = UpdateDatabaseForm()
     result = alert(title="Update Database", content=ud_form)
 
   def new_workout_click(self, **event_args):
     global workout_id
+    
     awf = AddWorkoutForm()
     awf.workout_notes_text_area.text = anvil.server.call("get_workout_notes", awf.add_workout_date_picker.date)
     result = alert(title="Add Workout", content=awf, large=True, buttons=[("OK", True), ("Cancel", False)])
