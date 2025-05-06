@@ -1,0 +1,59 @@
+components:
+- layout_properties: {grid_position: 'ZHCAJT,RNRMPV'}
+  name: label_1
+  properties: {}
+  type: Label
+- layout_properties: {grid_position: 'ZHCAJT,CXCUWS'}
+  name: label_2
+  properties: {bold: true, text: This Workout}
+  type: Label
+- layout_properties: {grid_position: 'ZHCAJT,HUQGIT'}
+  name: label_3
+  properties: {bold: true, text: Previous Workout}
+  type: Label
+- layout_properties: {grid_position: 'YXGLVS,ZRBRXM'}
+  name: label_4
+  properties: {align: right, bold: true, role: headline, text: 'Weight:'}
+  type: Label
+- event_bindings: {change: this_weight_text_box_change}
+  layout_properties: {grid_position: 'YXGLVS,LBCXLK'}
+  name: this_weight_text_box
+  properties: {}
+  type: TextBox
+- layout_properties: {grid_position: 'YXGLVS,OJRUBU'}
+  name: previous_weight_text_box
+  properties: {enabled: false}
+  type: TextBox
+- data_bindings:
+  - {code: self.this_weight_text_box.text, property: value, writeback: false}
+  event_bindings: {change: weight_slider_change, slide: weight_slider_slide}
+  layout_properties: {grid_position: 'IRPTNP,UJPQUN'}
+  name: weight_slider
+  properties: {behaviour: drag, format: .0f, max: 225, min: 5, pips: true, pips_density: -1, pips_mode: steps, pips_values: '', spacing_below: small, start: '20', step: 5}
+  type: form:dep_k17aqrqenc4p82:Slider
+- event_bindings: {change: weight_quarter_slider_change, slide: weight_quarter_slider_slide}
+  layout_properties: {grid_position: 'AGBYUT,BNBLRT'}
+  name: weight_quarter_slider
+  properties: {behaviour: drag, max: 5, pips: true, spacing_below: large, start: '0', step: 0.25}
+  type: form:dep_k17aqrqenc4p82:Slider
+- layout_properties: {grid_position: 'LISGVX,LIABPJ'}
+  name: label_5
+  properties: {align: right, bold: true, role: headline, text: 'Reps:'}
+  type: Label
+- event_bindings: {change: this_reps_text_box_change}
+  layout_properties: {grid_position: 'LISGVX,ZHUYAZ'}
+  name: this_reps_text_box
+  properties: {}
+  type: TextBox
+- layout_properties: {grid_position: 'LISGVX,OJNWAR'}
+  name: previous_reps_text_box
+  properties: {enabled: false}
+  type: TextBox
+- data_bindings: []
+  event_bindings: {change: reps_slider_change, slide: reps_slider_slide}
+  layout_properties: {full_width_row: false, grid_position: 'HPBAAT,EEVGDX'}
+  name: reps_slider
+  properties: {behaviour: drag, format: .0f, max: 20, min: 1, pips: true, pips_density: null, pips_mode: steps, pips_stepped: true, pips_values: '', start: '8', step: 1}
+  type: form:dep_k17aqrqenc4p82:Slider
+container: {type: ColumnPanel}
+is_package: true

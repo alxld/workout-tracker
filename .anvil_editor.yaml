@@ -11,6 +11,7 @@ unique_ids:
     MainDisplay.RowTemplate1.SetDetails: '1744341477102416622578161.17566'
     MainDisplay.RowTemplate1.SetDetails.RowTemplate2: '1744340924267954144047874.0626'
     UpdateDatabaseForm: '1745870259887130224732231.1918'
+    UpdateSetForm: '1746505574549713856749162.8143'
   modules:
     Exercise: '1746245164228683369517122.4934'
   scripts: {}

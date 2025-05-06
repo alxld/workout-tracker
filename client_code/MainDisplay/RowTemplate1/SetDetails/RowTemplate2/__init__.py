@@ -1,4 +1,5 @@
 from ._anvil_designer import RowTemplate2Template
+from .....UpdateSetForm import UpdateSetForm
 from anvil_extras import augment
 from anvil import *
 
@@ -11,4 +12,6 @@ class RowTemplate2(RowTemplate2Template):
 
   def row_click(self, **event_args):
     print("row clicked")
-    # Any code you write here will run before the form opens.
+    usf = UpdateSetForm(self.item.prevWeight, self.item.prevReps)
+    results = alert(content=usf, title="Update Set", large=True, buttons=[("OK", True), ("Cancel", False)])
+    print(results)
