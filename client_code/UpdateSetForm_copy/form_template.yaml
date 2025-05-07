@@ -1,0 +1,89 @@
+components:
+- layout_properties: {grid_position: 'PGIUED,GLJBOS ZHCAJT,RNRMPV'}
+  name: label_1
+  properties: {}
+  type: Label
+- layout_properties: {grid_position: 'PGIUED,GLJBOS ZHCAJT,CXCUWS'}
+  name: label_2
+  properties: {bold: true, text: This Workout}
+  type: Label
+- layout_properties: {grid_position: 'PGIUED,GLJBOS ZHCAJT,HUQGIT'}
+  name: label_3
+  properties: {bold: true, text: Previous Workout}
+  type: Label
+- layout_properties: {grid_position: 'PGIUED,GLJBOS YXGLVS,ZRBRXM'}
+  name: label_4
+  properties: {align: right, bold: true, role: headline, text: 'Weight:'}
+  type: Label
+- event_bindings: {change: this_weight_text_box_change}
+  layout_properties: {grid_position: 'PGIUED,GLJBOS YXGLVS,LBCXLK'}
+  name: this_weight_text_box
+  properties: {}
+  type: TextBox
+- layout_properties: {grid_position: 'PGIUED,GLJBOS YXGLVS,OJRUBU'}
+  name: previous_weight_text_box
+  properties: {enabled: false}
+  type: TextBox
+- event_bindings: {click: minus_10_button_click}
+  layout_properties: {grid_position: 'PGIUED,GLJBOS HGKGXI,VJCOTH'}
+  name: minus_10_button
+  properties: {font_size: 20, icon: 'fa:minus', role: raised, text: '10'}
+  type: Button
+- event_bindings: {click: minus_5_button_click}
+  layout_properties: {grid_position: 'PGIUED,GLJBOS HGKGXI,NKTCNI'}
+  name: minus_5_button
+  properties: {font_size: 20, icon: 'fa:minus', role: raised, text: '5'}
+  type: Button
+- event_bindings: {click: minus_2p5_button_click}
+  layout_properties: {grid_position: 'PGIUED,GLJBOS HGKGXI,AIRUAB'}
+  name: minus_2p5_button
+  properties: {font_size: 20, icon: 'fa:minus', role: raised, text: '2.5'}
+  type: Button
+- layout_properties: {grid_position: 'PGIUED,GLJBOS HGKGXI,GAGQLY'}
+  name: label_6
+  properties: {}
+  type: Label
+- event_bindings: {click: plus_2p5_button_click}
+  layout_properties: {grid_position: 'PGIUED,GLJBOS HGKGXI,DKBRPB'}
+  name: plus_2p5_button
+  properties: {font_size: 21, icon: 'fa:plus', role: raised, text: '2.5'}
+  type: Button
+- event_bindings: {click: plus_5_button_click}
+  layout_properties: {grid_position: 'PGIUED,GLJBOS HGKGXI,LZAHMK'}
+  name: plus_5_button
+  properties: {font_size: 20, icon: 'fa:plus', role: raised, text: '5'}
+  type: Button
+- event_bindings: {click: plus_10_button_click}
+  layout_properties: {grid_position: 'PGIUED,GLJBOS HGKGXI,WPHGUB'}
+  name: plus_10_button
+  properties: {font_size: 20, icon: 'fa:plus', role: raised, text: '10'}
+  type: Button
+- layout_properties: {grid_position: 'PGIUED,GLJBOS KWAZFK,OIKSOA'}
+  name: page_break_1
+  properties: {border: 1px solid white, margin_top: 12}
+  type: form:dep_k17aqrqenc4p82:PageBreak
+- layout_properties: {grid_position: 'PGIUED,GLJBOS LISGVX,LIABPJ'}
+  name: label_5
+  properties: {align: right, bold: true, role: headline, text: 'Reps:'}
+  type: Label
+- event_bindings: {change: this_reps_text_box_change}
+  layout_properties: {grid_position: 'PGIUED,GLJBOS LISGVX,ZHUYAZ'}
+  name: this_reps_text_box
+  properties: {}
+  type: TextBox
+- layout_properties: {grid_position: 'PGIUED,GLJBOS LISGVX,OJNWAR'}
+  name: previous_reps_text_box
+  properties: {enabled: false}
+  type: TextBox
+- layout_properties: {full_width_row: true, grid_position: 'PGIUED,DYANVJ'}
+  name: plot_1
+  properties: {height: 294}
+  type: Plot
+- data_bindings: []
+  event_bindings: {change: reps_slider_change, slide: reps_slider_slide}
+  layout_properties: {full_width_row: false, grid_position: 'PGIUED,GLJBOS HPBAAT,EEVGDX'}
+  name: reps_slider
+  properties: {behaviour: drag, format: .0f, max: 20, min: 1, pips: true, pips_density: null, pips_mode: steps, pips_stepped: true, pips_values: '', start: '8', step: 1}
+  type: form:dep_k17aqrqenc4p82:Slider
+container: {type: ColumnPanel}
+is_package: true

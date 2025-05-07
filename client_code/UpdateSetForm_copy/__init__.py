@@ -1,23 +1,22 @@
-from ._anvil_designer import UpdateSetFormTemplate
+from ._anvil_designer import UpdateSetForm_copyTemplate
 from anvil import *
 import plotly.graph_objects as go
 import anvil.server
 import math
 
 
-class UpdateSetForm(UpdateSetFormTemplate):
+class UpdateSetForm_copy(UpdateSetForm_copyTemplate):
   def __init__(self, prevWeight, prevReps, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
     self.previous_weight_text_box.text = prevWeight
     self.this_weight_text_box.text = prevWeight
-        
+
     self.previous_reps_text_box.text = prevReps
     self.this_reps_text_box.text = prevReps
     self.reps_slider.value = prevReps
 
-  
   def reps_slider_change(self, handle, **event_args):
     self.this_reps_text_box.text = round(self.reps_slider.value)
 
@@ -27,9 +26,8 @@ class UpdateSetForm(UpdateSetFormTemplate):
   def reps_slider_slide(self, handle, **event_args):
     self.this_reps_text_box.text = round(self.reps_slider.value)
 
-  
   def weight_slider_change(self, handle, **event_args):
-    self.this_weight_text_box.text = round(self.weight_slider.value * 4)/4
+    self.this_weight_text_box.text = round(self.weight_slider.value * 4) / 4
 
   def this_weight_text_box_change(self, **event_args):
     self.weight_slider.value = self.this_weight_text_box.text
