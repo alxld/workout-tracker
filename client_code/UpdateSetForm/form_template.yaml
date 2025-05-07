@@ -24,18 +24,44 @@ components:
   name: previous_weight_text_box
   properties: {enabled: false}
   type: TextBox
-- data_bindings:
-  - {code: self.this_weight_text_box.text, property: value, writeback: false}
-  event_bindings: {change: weight_slider_change, slide: weight_slider_slide}
-  layout_properties: {grid_position: 'IRPTNP,UJPQUN'}
-  name: weight_slider
-  properties: {behaviour: drag, format: .0f, max: 225, min: 5, pips: true, pips_density: -1, pips_mode: steps, pips_values: '', spacing_below: small, start: '20', step: 5}
-  type: form:dep_k17aqrqenc4p82:Slider
-- event_bindings: {change: weight_quarter_slider_change, slide: weight_quarter_slider_slide}
-  layout_properties: {grid_position: 'AGBYUT,BNBLRT'}
-  name: weight_quarter_slider
-  properties: {behaviour: drag, max: 5, pips: true, spacing_below: large, start: '0', step: 0.25}
-  type: form:dep_k17aqrqenc4p82:Slider
+- event_bindings: {click: minus_10_button_click}
+  layout_properties: {grid_position: 'HGKGXI,VJCOTH'}
+  name: minus_10_button
+  properties: {font_size: 20, icon: 'fa:minus', role: raised, text: '10'}
+  type: Button
+- event_bindings: {click: minus_5_button_click}
+  layout_properties: {grid_position: 'HGKGXI,NKTCNI'}
+  name: minus_5_button
+  properties: {font_size: 20, icon: 'fa:minus', role: raised, text: '5'}
+  type: Button
+- event_bindings: {click: minus_2p5_button_click}
+  layout_properties: {grid_position: 'HGKGXI,AIRUAB'}
+  name: minus_2p5_button
+  properties: {font_size: 20, icon: 'fa:minus', role: raised, text: '2.5'}
+  type: Button
+- layout_properties: {grid_position: 'HGKGXI,GAGQLY'}
+  name: label_6
+  properties: {}
+  type: Label
+- event_bindings: {click: plus_2p5_button_click}
+  layout_properties: {grid_position: 'HGKGXI,DKBRPB'}
+  name: plus_2p5_button
+  properties: {font_size: 21, icon: 'fa:plus', role: raised, text: '2.5'}
+  type: Button
+- event_bindings: {click: plus_5_button_click}
+  layout_properties: {grid_position: 'HGKGXI,LZAHMK'}
+  name: plus_5_button
+  properties: {font_size: 20, icon: 'fa:plus', role: raised, text: '5'}
+  type: Button
+- event_bindings: {click: plus_10_button_click}
+  layout_properties: {grid_position: 'HGKGXI,WPHGUB'}
+  name: plus_10_button
+  properties: {font_size: 20, icon: 'fa:plus', role: raised, text: '10'}
+  type: Button
+- layout_properties: {grid_position: 'KWAZFK,OIKSOA'}
+  name: page_break_1
+  properties: {border: 1px solid white, margin_top: 12}
+  type: form:dep_k17aqrqenc4p82:PageBreak
 - layout_properties: {grid_position: 'LISGVX,LIABPJ'}
   name: label_5
   properties: {align: right, bold: true, role: headline, text: 'Reps:'}

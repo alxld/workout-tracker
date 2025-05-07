@@ -11,9 +11,7 @@ class UpdateSetForm(UpdateSetFormTemplate):
 
     self.previous_weight_text_box.text = prevWeight
     self.this_weight_text_box.text = prevWeight
-    self.weight_slider.value = prevWeight
-    self.weight_quarter_slider.value = prevWeight - math.floor(float(prevWeight))
-    
+        
     self.previous_reps_text_box.text = prevReps
     self.this_reps_text_box.text = prevReps
     self.reps_slider.value = prevReps
@@ -35,12 +33,20 @@ class UpdateSetForm(UpdateSetFormTemplate):
   def this_weight_text_box_change(self, **event_args):
     self.weight_slider.value = self.this_weight_text_box.text
 
-  def weight_slider_slide(self, handle, **event_args):
-    self.this_weight_text_box.text = round(self.weight_slider.value * 4)/4
+  def minus_10_button_click(self, **event_args):
+    self.this_weight_text_box.text = float(self.this_weight_text_box.text) - 10
 
-  def weight_quarter_slider_change(self, handle, **event_args):
-    newval = math.floor(float(self.this_weight_text_box.text)/5)*5 + float(self.weight_quarter_slider.value)
-    self.this_weight_text_box.text = newval
+  def minus_5_button_click(self, **event_args):
+    self.this_weight_text_box.text = float(self.this_weight_text_box.text) - 5
 
-  def weight_quarter_slider_slide(self, handle, **event_args):
-    self.weight_quarter_slider_change(handle)
+  def minus_2p5_button_click(self, **event_args):
+    self.this_weight_text_box.text = float(self.this_weight_text_box.text) - 2.5
+
+  def plus_2p5_button_click(self, **event_args):
+    self.this_weight_text_box.text = float(self.this_weight_text_box.text) + 2.5
+
+  def plus_5_button_click(self, **event_args):
+    self.this_weight_text_box.text = float(self.this_weight_text_box.text) + 5
+
+  def plus_10_button_click(self, **event_args):
+    self.this_weight_text_box.text = float(self.this_weight_text_box.text) + 10
