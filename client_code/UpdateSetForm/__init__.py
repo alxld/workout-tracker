@@ -16,7 +16,6 @@ class UpdateSetForm(UpdateSetFormTemplate):
     self.previous_reps_text_box.text = prevReps
     self.this_reps_text_box.text = prevReps
     self.reps_slider.value = prevReps
-
   
   def reps_slider_change(self, handle, **event_args):
     self.this_reps_text_box.text = round(self.reps_slider.value)

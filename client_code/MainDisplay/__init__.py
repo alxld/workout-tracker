@@ -33,12 +33,15 @@ class MainDisplay(MainDisplayTemplate):
 
       aaron_exercise_type = aef.aaron_exercise_type_drop_down.selected_value
       weez_exercise_type = aef.weez_exercise_type_drop_down.selected_value
-      
-      aaron_workout_exercise_id = anvil.server.call("add_exercise_to_workout", workout_id, exercise, aaron_exercise_type, len(self._exercises), "Aaron")
-      print(f"Aaron's Workout Exercise ID: {aaron_workout_exercise_id}")
-      weez_workout_exercise_id = anvil.server.call("add_exercise_to_workout", workout_id, exercise, weez_exercise_type, len(self._exercises), "Weez")
-      print(f"Weez's Workout Exercise ID: {weez_workout_exercise_id}")
 
+      if anvil.server.call("workout_has_exercise", workout_id, exercise):
+        alert("Exercise already in workout!")
+        return
+              
+      aaron_workout_exercise_id = anvil.server.call("add_exercise_to_workout", workout_id, exercise, aaron_exercise_type, len(self._exercises), "Aaron")
+      #print(f"Aaron's Workout Exercise ID: {aaron_workout_exercise_id}")
+      weez_workout_exercise_id = anvil.server.call("add_exercise_to_workout", workout_id, exercise, weez_exercise_type, len(self._exercises), "Weez")
+      #print(f"Weez's Workout Exercise ID: {weez_workout_exercise_id}")
 
       this_ex = Exercise(exercise, body_part, aaron_workout_exercise_id, weez_workout_exercise_id)
       this_ex.aaron_exercise_type = aaron_exercise_type
@@ -64,3 +67,6 @@ class MainDisplay(MainDisplayTemplate):
 
       workout_id = anvil.server.call("add_workout", workout_date, workout_notes)
       print(f"Workout ID: {workout_id}")
+
+      curr_exs = anvil.server.call("get_workout_exercises", workout_id)
+      print("HEY")

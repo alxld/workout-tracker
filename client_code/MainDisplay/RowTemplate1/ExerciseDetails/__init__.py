@@ -48,7 +48,12 @@ class ExerciseDetails(ExerciseDetailsTemplate):
         break
 
     ex = self.parent.parent.items[idx]
-    anvil.server.call("remove_exercise_from_workout", ex._aaron_workout_exercise_id)
-    anvil.server.call("remove_exercise_from_workout", ex._weez_workout_exercise_id)
+
+    results = confirm(f"Are you sure you want to delete exercise: {ex.name}?", large=True, buttons=[ ("Yes", True), ("No", False) ])
+    if not results:
+      return
+    
+    ex.remove_from_database()
+    
     del self.parent.parent.items[idx]
     self.parent.parent.items = self.parent.parent.items

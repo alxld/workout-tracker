@@ -52,6 +52,17 @@ class Exercise:
     self._sets[user] = self._sets[user][:-1]
     anvil.server.call("remove_set_from_exercise", set_id)
 
+  def remove_from_database(self):
+    for set in self._sets['Aaron'] + self._sets['Weez']:
+      set.remove_from_database()
+
+    anvil.server.call("remove_exercise_from_workout", self._aaron_workout_exercise_id)
+    anvil.server.call("remove_exercise_from_workout", self._weez_workout_exercise_id)
+
+  @property
+  def name(self):
+    return self._name
+  
   @property
   def aaron_exercise_type(self):
     return self._exerciseType['Aaron']
@@ -90,3 +101,9 @@ class Set:
       return self.prevReps
 
     raise Exception(f"{key} not found in Set object")
+
+  def update_database(self):
+    anvil.server.call("update_set_weight_reps", self.set_id, self.weight, self.reps)
+
+  def remove_from_database(self):
+    anvil.server.call("remove_set_from_exercise", self.set_id)
