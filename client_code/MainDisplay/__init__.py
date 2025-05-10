@@ -69,4 +69,15 @@ class MainDisplay(MainDisplayTemplate):
       print(f"Workout ID: {workout_id}")
 
       curr_exs = anvil.server.call("get_workout_exercises", workout_id)
-      print("HEY")
+      for ex_id in curr_exs:
+        ex_name = anvil.server.call("get_exercise_name_for_exercise_id", ex_id)
+        aaron_workout_exercise_id = anvil.server.call("get_workout_exercise_for_user", workout_id, ex_id, "Aaron")
+        weez_workout_exercise_id = anvil.server.call("get_workout_exercise_for_user", workout_id, ex_id, "Weez")
+        body_part = anvil.server.call("get_body_part_for_exercise", ex_id)
+        this_ex = Exercise(ex_name, body_part, aaron_workout_exercise_id, weez_workout_exercise_id)
+        this_ex.aaron_exercise_type = anvil.server.call("get_exercise_type_for_exercise_id", aaron_workout_exercise_id)
+        this_ex.weez_exercise_type = anvil.server.call("get_exercise_type_for_exercise_id", weez_workout_exercise_id)
+        self._exercises.append(this_ex)
+      if curr_exs:
+        self.repeating_panel_1.items = self._exercises
+      
