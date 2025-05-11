@@ -62,6 +62,9 @@ class MainDisplay(MainDisplayTemplate):
     result = alert(title="Add Workout", content=awf, large=True, buttons=[("OK", True), ("Cancel", False)])
 
     if result:
+      # Remove any existing objects
+      self.repeating_panel_1.items = []
+      
       workout_date = awf.add_workout_date_picker.date
       workout_notes = awf.workout_notes_text_area.text
 
