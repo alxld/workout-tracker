@@ -3,8 +3,8 @@ dependencies:
 - dep_id: dep_k17aqrqenc4p82
   resolution_hints: {app_id: C6ZZPAPN4YYF5NVJ, name: Anvil Extras, package_name: anvil_extras}
   version: {version_tag: v3.1.0}
-name: Material Design 1
-package_name: Material_Design_1
+name: Workout Tracker
+package_name: Workout_Tracker
 runtime_options:
   client_version: '3'
   server_spec: {base: python310-minimal}
