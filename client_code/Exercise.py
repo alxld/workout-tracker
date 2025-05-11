@@ -8,7 +8,7 @@ import anvil.server
 #
 
 class Exercise:
-  def __init__(self, name, body_part, aaron_workout_exercise_id, weez_workout_exercise_id):
+  def __init__(self, name, body_part, aaron_workout_exercise_id, weez_workout_exercise_id, from_db=False):
     self._name = name
     self._body_part = body_part
     self._exerciseType = {"Aaron": "UNKNOWN", "Weez": "UNKNOWN"}
@@ -17,9 +17,29 @@ class Exercise:
     self._aaron_workout_exercise_id = aaron_workout_exercise_id
     self._weez_workout_exercise_id = weez_workout_exercise_id
 
-    for i in range(self._defaultSets):
-      self.addSet('Aaron')
-      self.addSet('Weez')
+    if from_db:
+      for set in anvil.server.call("get_sets_for_exercise_id", aaron_workout_exercise_id):
+        prev_weight, prev_reps = anvil.server.call("get_previous_set_weight_reps", set[0])
+        newset = Set(set[3], prev_weight, prev_reps, set[0])
+        if set[1]:
+          newset.weight = set[1]
+        if set[2]:
+          newset.reps = set[2]
+        self._sets["Aaron"].append(newset)
+
+      for set in anvil.server.call("get_sets_for_exercise_id", weez_workout_exercise_id):
+        prev_weight, prev_reps = anvil.server.call("get_previous_set_weight_reps", set[0])
+        newset = Set(set[3], prev_weight, prev_reps, set[0])
+        if set[1]:
+          newset.weight = set[1]
+        if set[2]:
+          newset.reps = set[2]
+        self._sets["Weez"].append(newset)
+    
+    else:
+      for i in range(self._defaultSets):
+        self.addSet('Aaron')
+        self.addSet('Weez')
 
   def __getitem__(self, key):
     if key == "name":
