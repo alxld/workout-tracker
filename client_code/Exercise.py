@@ -18,23 +18,28 @@ class Exercise:
     self._weez_workout_exercise_id = weez_workout_exercise_id
 
     if from_db:
-      for set in anvil.server.call("get_sets_for_exercise_id", aaron_workout_exercise_id):
-        prev_weight, prev_reps = anvil.server.call("get_previous_set_weight_reps", set[0])
-        newset = Set(set[3], prev_weight, prev_reps, set[0])
-        if set[1]:
-          newset.weight = set[1]
-        if set[2]:
-          newset.reps = set[2]
-        self._sets["Aaron"].append(newset)
+      aaron_sets = anvil.server.call("get_sets_for_exercise_id", aaron_workout_exercise_id)
+      weez_sets = anvil.server.call("get_sets_for_exercise_id", weez_workout_exercise_id)
 
-      for set in anvil.server.call("get_sets_for_exercise_id", weez_workout_exercise_id):
-        prev_weight, prev_reps = anvil.server.call("get_previous_set_weight_reps", set[0])
-        newset = Set(set[3], prev_weight, prev_reps, set[0])
-        if set[1]:
-          newset.weight = set[1]
-        if set[2]:
-          newset.reps = set[2]
-        self._sets["Weez"].append(newset)
+      if aaron_sets:
+        for set in aaron_sets:
+          prev_weight, prev_reps = anvil.server.call("get_previous_set_weight_reps", set[0])
+          newset = Set(set[3], prev_weight, prev_reps, set[0])
+          if set[1]:
+            newset.weight = set[1]
+          if set[2]:
+            newset.reps = set[2]
+          self._sets["Aaron"].append(newset)
+
+      if weez_sets:
+        for set in weez_sets:
+          prev_weight, prev_reps = anvil.server.call("get_previous_set_weight_reps", set[0])
+          newset = Set(set[3], prev_weight, prev_reps, set[0])
+          if set[1]:
+            newset.weight = set[1]
+          if set[2]:
+            newset.reps = set[2]
+          self._sets["Weez"].append(newset)
     
     else:
       for i in range(self._defaultSets):

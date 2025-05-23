@@ -6,16 +6,16 @@ import math
 
 
 class UpdateSetForm(UpdateSetFormTemplate):
-  def __init__(self, prevWeight, prevReps, **properties):
+  def __init__(self, prevWeight, prevReps, thisWeight, thisReps, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
     self.previous_weight_text_box.text = prevWeight
-    self.this_weight_text_box.text = prevWeight
+    self.this_weight_text_box.text = thisWeight
         
     self.previous_reps_text_box.text = prevReps
-    self.this_reps_text_box.text = prevReps
-    self.reps_slider.value = prevReps
+    self.this_reps_text_box.text = thisReps
+    self.reps_slider.value = thisReps
   
   def reps_slider_change(self, handle, **event_args):
     self.this_reps_text_box.text = round(self.reps_slider.value)

@@ -11,7 +11,17 @@ class RowTemplate2(RowTemplate2Template):
     augment.set_event_handler(self, 'click', self.row_click)
 
   def row_click(self, **event_args):
-    usf = UpdateSetForm(self.item.prevWeight, self.item.prevReps)
+    if self.item.weight:
+      this_weight = self.item.weight
+    else:
+      this_weight = self.item.prevWeight
+      
+    if self.item.reps:
+      this_reps = self.item.reps
+    else:
+      this_reps = self.item.prevReps
+      
+    usf = UpdateSetForm(self.item.prevWeight, self.item.prevReps, this_weight, this_reps)
     results = alert(content=usf, title="Update Set", large=True, buttons=[("OK", True), ("Cancel", False)])
 
     if results:

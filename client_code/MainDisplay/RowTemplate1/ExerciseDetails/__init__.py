@@ -27,6 +27,10 @@ class ExerciseDetails(ExerciseDetailsTemplate):
     self.parent.parent.items = self.parent.parent.items
 
   def aaron_delete_set_button_click(self, **event_args):
+    results = confirm("Are you sure you want to delete set?", large=True, buttons=[ ("Yes", True), ("No", False) ])
+    if not results:
+      return
+      
     for idx in range(len(self.parent.parent.items)):
       if self.parent.item == self.parent.parent.items[idx]:
         break
@@ -35,6 +39,10 @@ class ExerciseDetails(ExerciseDetailsTemplate):
     self.parent.parent.items = self.parent.parent.items
 
   def weez_delete_set_button_click(self, **event_args):
+    results = confirm("Are you sure you want to delete set?", large=True, buttons=[ ("Yes", True), ("No", False) ])
+    if not results:
+      return
+      
     for idx in range(len(self.parent.parent.items)):
       if self.parent.item == self.parent.parent.items[idx]:
         break
