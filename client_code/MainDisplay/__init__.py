@@ -93,10 +93,13 @@ class MainDisplay(MainDisplayTemplate):
 
   def main_timer_tick(self, **event_args):
     """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""
-    self.datetime_headline.text = datetime.now().strftime("%a %B %d, %Y  %I:%M:%S %p")
+    self.datetime_headline.text = datetime.now().strftime("%a %B %d, %Y  %-I:%M %p")
     if self._timerState == "PLAYING":
       self._currTimer = self._currTimer + timedelta(seconds=1)
-    self.timer_headline.text = self._currTimer.strftime("  %H:%M:%S")
+      if self._currTimer > datetime(2000,1,1,minute=30):
+        self._currTimer = datetime(2000,1,1)
+        self._timerState = "PAUSED"
+    self.timer_headline.text = self._currTimer.strftime("  %M:%S")
 
   def timer_link_click(self, **event_args):
     """This method is called when the link is clicked"""
@@ -106,4 +109,4 @@ class MainDisplay(MainDisplayTemplate):
       self._timerState = "PAUSED"
       self._currTimer = datetime(2000,1,1)
       
-    self.timer_headline.text = self._currTimer.strftime("  %H:%M:%S")
+    self.timer_headline.text = self._currTimer.strftime("  %M:%S")

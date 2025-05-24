@@ -39,7 +39,7 @@ components:
         role: headline
         spacing:
           padding: ['10', null, null, null]
-        text: '  00:00:00'
+        text: '  00:00'
       type: Label
     event_bindings: {click: timer_link_click}
     layout_properties: {}

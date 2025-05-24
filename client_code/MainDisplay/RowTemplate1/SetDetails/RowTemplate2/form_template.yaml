@@ -2,8 +2,8 @@ components: []
 container:
   properties:
     bold: true
-    font_size: 20
-    margin: ['-10', null, '-10', null]
+    font_size: 25
+    margin: ['-15', null, '-20', null]
     underline: false
     visible: true
   type: DataRowPanel

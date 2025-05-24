@@ -25,6 +25,8 @@ components:
   name: column_panel_1
   properties: {border: '', col_spacing: small, role: card, spacing_above: none, spacing_below: none}
   type: ColumnPanel
-container: {type: ColumnPanel}
+container:
+  properties: {visible: true}
+  type: ColumnPanel
 custom_component: true
 is_package: true
