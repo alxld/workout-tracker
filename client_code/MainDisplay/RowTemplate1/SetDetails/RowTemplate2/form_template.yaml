@@ -1,3 +1,10 @@
 components: []
-container: {type: DataRowPanel}
+container:
+  properties:
+    bold: true
+    font_size: 20
+    margin: ['-10', null, '-10', null]
+    underline: false
+    visible: true
+  type: DataRowPanel
 is_package: true

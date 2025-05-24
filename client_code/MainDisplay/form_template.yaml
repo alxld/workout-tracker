@@ -27,15 +27,63 @@ components:
   properties: {}
   type: ColumnPanel
 - components:
-  - event_bindings: {click: new_workout_click}
+  - components:
+    - layout_properties: {grid_position: 'ERLPKY,DCTYLL'}
+      name: timer_headline
+      properties:
+        background: ''
+        bold: true
+        font_size: 55
+        icon: fa:clock-o
+        icon_align: left
+        role: headline
+        spacing:
+          padding: ['10', null, null, null]
+        text: '  00:00:00'
+      type: Label
+    event_bindings: {click: timer_link_click}
     layout_properties: {}
+    name: timer_link
+    properties:
+      spacing:
+        padding: ['0', null, '8', null]
+    type: Link
+  - event_bindings: {click: new_workout_click}
+    layout_properties: {expand: false}
     name: button_1
-    properties: {background: 'theme:Gray 200', role: raised, text: Edit/New Workout}
+    properties:
+      background: theme:Gray 200
+      bold: true
+      font_size: 17
+      icon: ''
+      role: raised
+      spacing:
+        margin: ['15', null, null, null]
+      spacing_above: small
+      text: Edit/New Workout
     type: Button
   layout_properties: {slot: nav-right}
   name: navbar_links
   properties: {}
   type: FlowPanel
+- event_bindings: {tick: main_timer_tick}
+  layout_properties: {slot: top-left-btn}
+  name: main_timer
+  properties: {interval: 1}
+  type: Timer
+- layout_properties: {slot: title}
+  name: datetime_headline
+  properties:
+    align: center
+    bold: true
+    font_size: 50
+    role: headline
+    spacing:
+      padding: ['15', '0', '0', null]
+    spacing_above: small
+    text: Sat Jan 01, 2025
+    visible: true
+  type: Label
 container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate

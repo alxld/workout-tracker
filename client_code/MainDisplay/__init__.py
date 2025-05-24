@@ -5,6 +5,7 @@ from ..Exercise import Exercise, Set
 from ..AddWorkoutForm import AddWorkoutForm
 from anvil import *
 import anvil.server
+from datetime import datetime, time, timedelta
  
 class MainDisplay(MainDisplayTemplate):
   def __init__(self, **properties):
@@ -12,6 +13,9 @@ class MainDisplay(MainDisplayTemplate):
     self.init_components(**properties)
 
     self._exercises = []
+
+    self._currTimer = datetime(2000,1,1)
+    self._timerState = "PAUSED"
 
     #self._exercises.append(Exercise("blah", "no part"))
     self.repeating_panel_1.items = self._exercises
@@ -66,6 +70,7 @@ class MainDisplay(MainDisplayTemplate):
       
       # Remove any existing objects
       self.repeating_panel_1.items = []
+      self._exercises = []
       
       workout_date = awf.add_workout_date_picker.date
       workout_notes = awf.workout_notes_text_area.text
@@ -85,4 +90,20 @@ class MainDisplay(MainDisplayTemplate):
         self._exercises.append(this_ex)
       if curr_exs:
         self.repeating_panel_1.items = self._exercises
+
+  def main_timer_tick(self, **event_args):
+    """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""
+    self.datetime_headline.text = datetime.now().strftime("%a %B %d, %Y  %I:%M:%S %p")
+    if self._timerState == "PLAYING":
+      self._currTimer = self._currTimer + timedelta(seconds=1)
+    self.timer_headline.text = self._currTimer.strftime("  %H:%M:%S")
+
+  def timer_link_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    if self._timerState == "PAUSED":
+      self._timerState = "PLAYING"
+    elif self._timerState == "PLAYING":
+      self._timerState = "PAUSED"
+      self._currTimer = datetime(2000,1,1)
       
+    self.timer_headline.text = self._currTimer.strftime("  %H:%M:%S")

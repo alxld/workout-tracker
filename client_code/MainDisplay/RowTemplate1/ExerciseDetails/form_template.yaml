@@ -12,10 +12,14 @@ components:
   name: label_2
   properties: {}
   type: Label
-- layout_properties: {grid_position: 'ZUJTCO,GHOZGR XVFZCY,WWVVLW'}
+- layout_properties: {full_width_row: false, grid_position: 'ZUJTCO,GHOZGR XVFZCY,WWVVLW'}
   name: label_3
-  properties: {align: center, text: Aaron}
+  properties: {align: center, bold: true, text: Aaron}
   type: Label
+- layout_properties: {grid_position: 'ZUJTCO,GHOZGR XVFZCY,IOQCNF'}
+  name: aaron_history_button
+  properties: {icon: 'fa:history', text: ''}
+  type: Button
 - layout_properties: {grid_position: 'ZUJTCO,GHOZGR ABOFUR,SLMMQZ'}
   name: aaron_exercise_type
   properties:
@@ -26,8 +30,12 @@ components:
   type: Label
 - layout_properties: {grid_position: 'ZUJTCO,TLWZBT CKCVLN,BLPMVG'}
   name: label_4
-  properties: {align: center, text: Weez}
+  properties: {align: center, bold: true, text: Weez}
   type: Label
+- layout_properties: {grid_position: 'ZUJTCO,TLWZBT CKCVLN,OQCXAV'}
+  name: weez_history_button
+  properties: {icon: 'fa:history', text: ''}
+  type: Button
 - layout_properties: {grid_position: 'ZUJTCO,TLWZBT SOHRUJ,QGVLIY'}
   name: weez_exercise_type
   properties:
@@ -96,20 +104,8 @@ components:
     spacing:
       margin: ['0', null, '0', null]
   type: GridPanel
-- layout_properties: {grid_position: 'UZNYAU,SCGXUZ'}
-  name: label_1
-  properties: {align: right, text: 'History:'}
-  type: Label
-- layout_properties: {grid_position: 'UZNYAU,DZSCHS'}
-  name: aaron_history_button
-  properties: {icon: 'fa:history', text: ''}
-  type: Button
-- layout_properties: {grid_position: 'UZNYAU,EEYZEO'}
-  name: weez_history_button
-  properties: {icon: 'fa:history', text: ''}
-  type: Button
 container:
-  properties: {col_widths: '{"QQFECM":10,"GHOZGR":25,"TLWZBT":25,"XYDLUD":10,"KLXVJO":25,"FRWQGN":25,"SCGXUZ":10,"DZSCHS":25,"EEYZEO":25,"KHTZFD":50,"XYZWQG":10}'}
+  properties: {col_widths: '{"QQFECM":10,"GHOZGR":25,"TLWZBT":25,"XYDLUD":10,"KLXVJO":25,"FRWQGN":25,"KHTZFD":50,"XYZWQG":10,"WWVVLW":60,"IOQCNF":20,"BLPMVG":45,"OQCXAV":15}'}
   type: ColumnPanel
 custom_component: true
 is_package: true

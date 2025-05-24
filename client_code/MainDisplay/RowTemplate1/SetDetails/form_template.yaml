@@ -1,22 +1,29 @@
 components:
 - components:
   - components:
-    - name: repeating_panel_1
-      properties: {item_template: MainDisplay.RowTemplate1.SetDetails.RowTemplate2}
+    - layout_properties: {}
+      name: repeating_panel_1
+      properties: {item_template: MainDisplay.RowTemplate1.SetDetails.RowTemplate2, spacing_above: none, spacing_below: none}
       type: RepeatingPanel
     layout_properties: {full_width_row: true, grid_position: 'GVSGTV,MWSUAR'}
     name: data_grid_1
     properties:
+      auto_header: true
       columns:
       - {data_key: setNum, expand: false, id: JKSDUP, title: 'Set #', width: 78}
       - {data_key: weight, id: VJQQOR, title: Weight}
       - {data_key: reps, id: OJLQEN, title: Reps}
       - {data_key: prevWeight, id: FBFUPR, title: Prev Weight}
       - {data_key: prevReps, id: FNBGZU, title: Prev Reps}
+      margin: ['0', null, '0', null]
+      show_page_controls: false
+      spacing_above: none
+      spacing_below: none
+      visible: true
     type: DataGrid
   layout_properties: {full_width_row: true, grid_position: 'OSECHP,LCRAIG'}
   name: column_panel_1
-  properties: {}
+  properties: {border: '', col_spacing: small, role: card, spacing_above: none, spacing_below: none}
   type: ColumnPanel
 container: {type: ColumnPanel}
 custom_component: true
