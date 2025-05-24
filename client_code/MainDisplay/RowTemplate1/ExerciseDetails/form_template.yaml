@@ -2,112 +2,130 @@ components:
 - components:
   - layout_properties: {grid_position: 'FSRSOM,BLRSOT'}
     name: exercise_name_headline
-    properties: {role: headline, text: Exercise Name}
+    properties:
+      bold: true
+      role: headline
+      spacing:
+        padding: ['0', null, '0', null]
+      text: Exercise Name
     type: Label
   - event_bindings: {click: remove_exercise_button_click}
     layout_properties: {grid_position: 'FSRSOM,BEOTNU'}
     name: remove_exercise_button
     properties: {icon: 'fa:minus', role: raised, text: ''}
     type: Button
-  - layout_properties: {grid_position: 'URJPYR,XVSUDQ'}
-    name: label_2
-    properties: {}
-    type: Label
-  - layout_properties: {grid_position: 'URJPYR,TOKYFC QVIPNA,RRAIEA'}
+  - layout_properties: {grid_position: 'RGXYAR,OORSBU TWJALK,ZYZKGT'}
     name: label_3
-    properties: {align: center, bold: true, text: Aaron}
+    properties:
+      align: center
+      bold: true
+      font_size: 18
+      spacing:
+        margin: ['0', null, '0', null]
+        padding: ['0', null, '0', null]
+      text: Aaron
     type: Label
-  - layout_properties: {grid_position: 'URJPYR,TOKYFC JWJGOW,NCGXHT'}
+  - layout_properties: {grid_position: 'RGXYAR,OORSBU AZQPHD,FRBBQJ'}
     name: aaron_exercise_type
     properties:
       align: center
       font_size: 12
       spacing:
+        margin: ['0', null, null, null]
         padding: [0, null, 0, null]
     type: Label
-  - layout_properties: {grid_position: 'URJPYR,ZHDHMJ'}
-    name: aaron_history_button
-    properties: {icon: 'fa:history', text: ''}
+  - event_bindings: {click: aaron_add_set_button_click}
+    layout_properties: {grid_position: 'RGXYAR,VJQKMN'}
+    name: aaron_add_set_button
+    properties:
+      bold: false
+      font_size: 17
+      icon: fa:plus
+      role: raised
+      spacing:
+        margin: ['0', null, '0', null]
+        padding: ['0', '20', '0', '20']
+      text: ''
     type: Button
-  - layout_properties: {grid_position: 'URJPYR,SXMBTG JKCSKY,QWLCNJ'}
+  - event_bindings: {click: aaron_delete_set_button_click}
+    layout_properties: {grid_position: 'RGXYAR,PWRKJU'}
+    name: aaron_delete_set_button
+    properties:
+      font_size: 17
+      icon: fa:minus
+      role: raised
+      spacing:
+        margin: ['0', null, '00', null]
+        padding: ['0', '20', '0', '20']
+      text: ''
+    type: Button
+  - layout_properties: {grid_position: 'RGXYAR,VPZYXF'}
+    name: aaron_history_button
+    properties:
+      font_size: 17
+      icon: fa:history
+      role: raised
+      spacing:
+        padding: [null, '20', null, '20']
+      text: ''
+    type: Button
+  - layout_properties: {grid_position: 'RNPORB,ZUANHK HTLLAU,VGFGWU'}
     name: label_4
-    properties: {align: center, bold: true, text: Weez}
+    properties:
+      align: center
+      bold: true
+      font_size: 18
+      spacing:
+        margin: ['0', null, '0', null]
+        padding: ['0', null, '0', null]
+      text: Weez
     type: Label
-  - layout_properties: {grid_position: 'URJPYR,SXMBTG EPJCXG,SPKTBN'}
+  - layout_properties: {grid_position: 'RNPORB,ZUANHK UGXDSW,DTYTHT'}
     name: weez_exercise_type
     properties:
       align: center
       font_size: 12
       spacing:
+        margin: ['0', null, null, null]
         padding: [0, null, 0, null]
     type: Label
-  - layout_properties: {grid_position: 'URJPYR,DHPTRD'}
-    name: weez_history_button
-    properties: {icon: 'fa:history', text: ''}
+  - event_bindings: {click: weez_add_set_button_click}
+    layout_properties: {grid_position: 'RNPORB,JOLCAR'}
+    name: weez_add_set_button
+    properties:
+      font_size: 17
+      icon: fa:plus
+      role: raised
+      spacing:
+        margin: ['0', null, '0', null]
+        padding: ['0', '20', '0', '20']
+      text: ''
     type: Button
-  - layout_properties: {grid_position: 'AINYVX,QAAMKE'}
-    name: label_5
-    properties: {align: right, text: 'Sets:'}
-    type: Label
-  - components:
-    - event_bindings: {click: aaron_add_set_button_click}
-      layout_properties: {col_xs: 0, row: OVALYC, width_xs: 6}
-      name: aaron_add_set_button
-      properties:
-        icon: fa:plus
-        role: raised
-        spacing:
-          margin: ['0', null, '0', null]
-        text: ''
-      type: Button
-    - event_bindings: {click: aaron_delete_set_button_click}
-      layout_properties: {col_xs: 6, row: OVALYC, width_xs: 6}
-      name: aaron_delete_set_button
-      properties:
-        icon: fa:minus
-        role: raised
-        spacing:
-          margin: ['0', null, '00', null]
-          padding: ['0', null, '0', null]
-        text: ''
-      type: Button
-    layout_properties: {grid_position: 'AINYVX,BWBRIR'}
-    name: grid_panel_1
+  - event_bindings: {click: weez_delete_set_button_click}
+    layout_properties: {grid_position: 'RNPORB,KAPPRM'}
+    name: weez_delete_set_button
     properties:
+      font_size: 17
+      icon: fa:minus
+      role: raised
       spacing:
-        margin: ['0', null, '0', null]
-    type: GridPanel
-  - components:
-    - event_bindings: {click: weez_add_set_button_click}
-      layout_properties: {col_xs: 0, row: OVALYC, width_xs: 6}
-      name: weez_add_set_button
-      properties:
-        icon: fa:plus
-        role: raised
-        spacing:
-          margin: ['0', null, '0', null]
-        text: ''
-      type: Button
-    - event_bindings: {click: weez_delete_set_button_click}
-      layout_properties: {col_xs: 6, row: OVALYC, width_xs: 6}
-      name: weez_delete_set_button
-      properties:
-        icon: fa:minus
-        role: raised
-        spacing:
-          margin: ['0', null, '00', null]
-          padding: ['0', null, '0', null]
-        text: ''
-      type: Button
-    layout_properties: {grid_position: 'AINYVX,PWEMFZ'}
-    name: grid_panel_1_copy
+        margin: ['0', null, '00', null]
+        padding: ['0', '20', '0', '20']
+      text: ''
+    type: Button
+  - layout_properties: {grid_position: 'RNPORB,GKSLGJ'}
+    name: weez_history_button
     properties:
+      font_size: 17
+      icon: fa:history
+      role: raised
       spacing:
-        margin: ['0', null, '0', null]
-    type: GridPanel
+        padding: [null, '20', null, '20']
+      text: ''
+    type: Button
   layout_properties: {grid_position: 'UJQGYA,RTBERV'}
   name: card_1
-  properties: {col_widths: '{"BLRSOT":50,"BEOTNU":10,"XVSUDQ":10,"TOKYFC":20,"ZHDHMJ":5,"SXMBTG":20,"DHPTRD":5,"QAAMKE":10,"BWBRIR":25,"PWEMFZ":25}', role: card}
+  properties: {col_widths: '{"BLRSOT":45,"BEOTNU":15}', role: card}
   type: ColumnPanel
 container:
   data_bindings: []

@@ -27,7 +27,7 @@ class MainDisplay(MainDisplayTemplate):
   def add_exercise_button_click(self, **event_args):
     # Pull up AddExerciseForm to get new exercise details
     aef = AddExerciseForm()
-    result = alert(title="Add Exercise", content=aef, large=True, buttons=[("OK", True), ("Cancel", False)])
+    result = alert(title="Add Exercise", content=aef, large=True, buttons=[])
 
     body_part = aef.body_part_drop_down.selected_value
     exercise = aef.exercise_drop_down.selected_value
@@ -54,7 +54,7 @@ class MainDisplay(MainDisplayTemplate):
       self._exercises.append(this_ex)
       self.repeating_panel_1.items = self._exercises
       
-  def update_db_button_click(self, **event_args):
+  def edit_db_button_click(self, **event_args):
     ud_form = UpdateDatabaseForm()
     result = alert(title="Update Database", content=ud_form)
 
@@ -63,7 +63,7 @@ class MainDisplay(MainDisplayTemplate):
     
     awf = AddWorkoutForm()
     awf.workout_notes_text_area.text = anvil.server.call("get_workout_notes", awf.add_workout_date_picker.date)
-    result = alert(title="Add Workout", content=awf, large=True, buttons=[("OK", True), ("Cancel", False)])
+    result = alert(title="Add Workout", content=awf, large=True, buttons=[])
 
     if result:
       # Workout already exists, populate exercises

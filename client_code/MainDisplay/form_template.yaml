@@ -15,12 +15,18 @@ components:
   - event_bindings: {click: add_exercise_button_click}
     layout_properties: {grid_position: 'KUMPUH,ARLMMV'}
     name: add_exercise_button
-    properties: {role: raised, text: Add Exercise}
+    properties:
+      bold: true
+      font_size: 23
+      role: raised
+      spacing:
+        padding: [null, '20', null, '20']
+      text: Add Exercise
     type: Button
-  - event_bindings: {click: update_db_button_click}
+  - event_bindings: {click: edit_db_button_click}
     layout_properties: {grid_position: 'KUMPUH,ZAJRQS'}
-    name: update_db_button
-    properties: {role: raised, text: Update Database}
+    name: edit_db_button
+    properties: {bold: true, font_size: 25, role: raised, text: Edit Database}
     type: Button
   layout_properties: {slot: default}
   name: content_panel

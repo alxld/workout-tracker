@@ -1,44 +1,65 @@
 components:
 - layout_properties: {grid_position: 'URIUYV,BCAWBT'}
   name: headline_1
-  properties: {role: headline, text: Add Exercise}
+  properties: {bold: true, font_size: 35, role: headline, text: Add Exercise}
   type: Label
 - layout_properties: {grid_position: 'LLMLWL,GWKMGS'}
   name: label_1
-  properties: {text: 'Select Body Part:'}
+  properties: {font_size: 25, text: 'Select Body Part:'}
   type: Label
 - event_bindings: {change: body_part_drop_down_change}
   layout_properties: {grid_position: 'LLMLWL,KQYLKO'}
   name: body_part_drop_down
   properties:
+    font_size: 25
     items: [Pecs, Front Delts, Lats, Glutes]
   type: DropDown
 - layout_properties: {grid_position: 'PEUAKZ,RZZHWX'}
   name: label_2
-  properties: {text: 'Select Exercise:'}
+  properties: {font_size: 25, text: 'Select Exercise:'}
   type: Label
 - layout_properties: {grid_position: 'PEUAKZ,ZDHSUS'}
   name: exercise_drop_down
   properties:
+    font_size: 25
     items: [Bench Press, Bench Press Again, More Bench Press]
   type: DropDown
 - layout_properties: {grid_position: 'IUDXUB,IOCEOC'}
   name: label_3
-  properties: {text: Select Aaron's Exercise Type}
+  properties: {font_size: 25, text: Select Aaron's Exercise Type}
   type: Label
 - layout_properties: {grid_position: 'IUDXUB,VYSNMB'}
   name: aaron_exercise_type_drop_down
   properties:
+    font_size: 25
     items: [High Rep, Med Rep, High Weight]
   type: DropDown
 - layout_properties: {grid_position: 'KXQPCX,UGTFDQ'}
   name: label_4
-  properties: {text: Select Weez's Exercise Type}
+  properties: {font_size: 25, text: Select Weez's Exercise Type}
   type: Label
 - layout_properties: {grid_position: 'KXQPCX,RIJFIR'}
   name: weez_exercise_type_drop_down
   properties:
+    font_size: 25
     items: [High Rep, Med Rep, High Weight]
   type: DropDown
+- event_bindings: {click: ok_button_click}
+  layout_properties: {grid_position: 'LOFYUF,EKMSHR'}
+  name: ok_button
+  properties:
+    bold: true
+    font_size: 25
+    icon: ''
+    role: raised
+    spacing:
+      padding: [null, '25', null, '25']
+    text: OK
+  type: Button
+- event_bindings: {click: cancel_button_click}
+  layout_properties: {grid_position: 'LOFYUF,UOVKLZ'}
+  name: cancel_button
+  properties: {bold: true, font_size: 25, role: raised, text: Cancel}
+  type: Button
 container: {type: ColumnPanel}
 is_package: true

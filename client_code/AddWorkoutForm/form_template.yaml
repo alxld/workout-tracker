@@ -1,20 +1,37 @@
 components:
 - layout_properties: {grid_position: 'GECLNQ,LDRSRH XNUDXX,VCHIOI'}
   name: label_1
-  properties: {align: right, text: 'Date:'}
+  properties: {align: right, font_size: 25, text: 'Date:'}
   type: Label
 - layout_properties: {grid_position: 'GECLNQ,LDRSRH MVYWPI,SVHFUH'}
   name: label_2
-  properties: {align: right, text: 'Notes:'}
+  properties: {align: right, font_size: 25, text: 'Notes:'}
   type: Label
 - data_bindings: []
   layout_properties: {grid_position: 'GECLNQ,BJMNKP AKZQWM,XYPMVB'}
   name: add_workout_date_picker
-  properties: {placeholder: ''}
+  properties: {font_size: 25, placeholder: ''}
   type: DatePicker
 - layout_properties: {grid_position: 'GECLNQ,BJMNKP KQUUNY,ETRXUS'}
   name: workout_notes_text_area
-  properties: {}
+  properties: {font_size: 20}
   type: TextArea
+- event_bindings: {click: ok_button_click}
+  layout_properties: {grid_position: 'GZERJR,NYMQCR'}
+  name: ok_button
+  properties:
+    bold: true
+    font_size: 25
+    icon: ''
+    role: raised
+    spacing:
+      padding: [null, '25', null, '25']
+    text: OK
+  type: Button
+- event_bindings: {click: cancel_button_click}
+  layout_properties: {grid_position: 'GZERJR,LZJAKV'}
+  name: cancel_button
+  properties: {bold: true, font_size: 25, role: raised, text: Cancel}
+  type: Button
 container: {type: ColumnPanel}
 is_package: true
