@@ -81,5 +81,27 @@ components:
   name: reps_slider
   properties: {behaviour: drag, format: .0f, max: 20, min: 1, pips: true, pips_density: null, pips_mode: steps, pips_stepped: true, pips_values: '', start: '8', step: 1}
   type: form:dep_k17aqrqenc4p82:Slider
+- event_bindings: {click: ok_button_click}
+  layout_properties: {grid_position: 'QLSKDT,ABCRJG'}
+  name: ok_button
+  properties:
+    bold: true
+    font_size: 30
+    role: raised
+    spacing:
+      padding: [null, '50', null, '50']
+    text: OK
+  type: Button
+- event_bindings: {click: cancel_button_click}
+  layout_properties: {full_width_row: false, grid_position: 'QLSKDT,QRNAET'}
+  name: cancel_button
+  properties:
+    bold: true
+    font_size: 30
+    role: raised
+    spacing:
+      padding: [null, '50', null, '50']
+    text: Cancel
+  type: Button
 container: {type: ColumnPanel}
 is_package: true

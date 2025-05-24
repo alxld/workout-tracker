@@ -2,6 +2,11 @@
  This CSS implements the Material Design look and feel for Anvil apps.
  **/
 
+/* My custom roles */
+.anvil-role-large-alert-button-text > button.btn {
+  font-size: 80px;
+}
+
 /* Stop panel-cols cutting off drop shadows */
 .anvil-panel-col {
   padding-bottom: 10px;

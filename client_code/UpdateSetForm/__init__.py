@@ -50,3 +50,10 @@ class UpdateSetForm(UpdateSetFormTemplate):
 
   def plus_10_button_click(self, **event_args):
     self.this_weight_text_box.text = float(self.this_weight_text_box.text) + 10
+
+  def ok_button_click(self, **event_args):
+    self.raise_event("x-close-alert", value=True)
+
+  def cancel_button_click(self, **event_args):
+    self.raise_event("x-close-alert", value=False)
+

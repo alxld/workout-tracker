@@ -62,6 +62,8 @@ class MainDisplay(MainDisplayTemplate):
     result = alert(title="Add Workout", content=awf, large=True, buttons=[("OK", True), ("Cancel", False)])
 
     if result:
+      # Workout already exists, populate exercises
+      
       # Remove any existing objects
       self.repeating_panel_1.items = []
       

@@ -177,6 +177,3 @@ roles:
   name: dense
 - components: [Link]
   name: selected
-- components: [Button]
-  display_in_toolbox: false
-  name: large-alert-button
