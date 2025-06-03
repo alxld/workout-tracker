@@ -27,7 +27,6 @@ class RowTemplate2(RowTemplate2Template):
 
     if results:
       print(results)
-      return
       self.item.weight = usf.this_weight_text_box.text
       self.item.reps   = usf.this_reps_text_box.text
 
