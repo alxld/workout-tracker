@@ -62,7 +62,7 @@ class MainDisplay(MainDisplayTemplate):
     global workout_id
     
     awf = AddWorkoutForm()
-    awf.workout_notes_text_area.text = anvil.server.call("get_workout_notes", awf.add_workout_date_picker.date)
+    #awf.workout_notes_text_area.text = anvil.server.call("get_workout_notes", awf.add_workout_date_picker.date)
     result = alert(title="Add Workout", content=awf, large=True, buttons=[])
 
     if result:
