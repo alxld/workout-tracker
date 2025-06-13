@@ -18,8 +18,6 @@ class Exercise:
     self._weez_workout_exercise_id = weez_workout_exercise_id
 
     if from_db:
-      print(f"Aaron's workout exercise ID: {aaron_workout_exercise_id}")
-      print(f"Weez's workout exercise ID: {weez_workout_exercise_id}")
       aaron_sets = anvil.server.call("get_sets_for_exercise_id", aaron_workout_exercise_id)
       weez_sets = anvil.server.call("get_sets_for_exercise_id", weez_workout_exercise_id)
 
