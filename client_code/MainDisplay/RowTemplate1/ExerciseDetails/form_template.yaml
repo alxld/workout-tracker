@@ -9,6 +9,11 @@ components:
         padding: ['0', null, '0', null]
       text: Exercise Name
     type: Label
+  - event_bindings: {click: info_button_click}
+    layout_properties: {grid_position: 'FSRSOM,PCQWDQ'}
+    name: info_button
+    properties: {icon: 'fa:info', role: raised, text: '', tooltip: Exercise Info}
+    type: Button
   - event_bindings: {click: remove_exercise_button_click}
     layout_properties: {grid_position: 'FSRSOM,BEOTNU'}
     name: remove_exercise_button

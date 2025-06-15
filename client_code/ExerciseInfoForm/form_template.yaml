@@ -1,0 +1,47 @@
+components:
+- layout_properties: {grid_position: 'JEOOIS,SLOQTI'}
+  name: header
+  properties: {role: headline, text: Exercise Info for XXX}
+  type: Label
+- layout_properties: {grid_position: 'RNQAAX,DRKSIL'}
+  name: label_2
+  properties: {align: right, text: 'Description:'}
+  type: Label
+- layout_properties: {grid_position: 'RNQAAX,QKRXJY'}
+  name: description_text_area
+  properties: {height: 96}
+  type: TextArea
+- layout_properties: {grid_position: 'ZMJMAS,FJVYKB'}
+  name: label_3
+  properties: {align: right, text: 'Comments:'}
+  type: Label
+- layout_properties: {grid_position: 'ZMJMAS,BLLJBP'}
+  name: comments_text_area
+  properties: {height: 114}
+  type: TextArea
+- layout_properties: {grid_position: 'GGVSSV,TCFBBF'}
+  name: youtube_video
+  properties: {visible: false}
+  type: YouTubeVideo
+- layout_properties: {grid_position: 'LVHHEI,HWYKAP'}
+  name: label_1
+  properties: {align: right, font_size: null, text: 'Youtube ID:'}
+  type: Label
+- layout_properties: {grid_position: 'LVHHEI,HILLRD'}
+  name: youtube_link_text_box
+  properties: {}
+  type: TextBox
+- event_bindings: {click: ok_button_click}
+  layout_properties: {grid_position: 'LQBHKR,QCMIJK'}
+  name: ok_button
+  properties: {bold: true, font_size: 25, role: raised, text: OK}
+  type: Button
+- event_bindings: {click: cancel_button_click}
+  layout_properties: {grid_position: 'LQBHKR,HOMTFB'}
+  name: cancel_button
+  properties: {bold: true, font_size: 25, role: raised, text: Cancel, tooltip: ''}
+  type: Button
+container:
+  properties: {col_widths: '{"HWYKAP":10,"HILLRD":50,"DRKSIL":10,"QKRXJY":50,"FJVYKB":10,"BLLJBP":50}'}
+  type: ColumnPanel
+is_package: true

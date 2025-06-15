@@ -1,4 +1,5 @@
 from ._anvil_designer import ExerciseDetailsTemplate
+from ....ExerciseInfoForm import ExerciseInfoForm
 from anvil import *
 import anvil.server
 
@@ -65,3 +66,25 @@ class ExerciseDetails(ExerciseDetailsTemplate):
     
     del self.parent.parent.items[idx]
     self.parent.parent.items = self.parent.parent.items
+
+  def info_button_click(self, **event_args):
+    exercise_id = self.parent.item.exercise_id
+    details = anvil.server.call("get_exercise_details_for_exercise_id", exercise_id)
+    if 'description' in details:
+      desc = details['description']
+    else:
+      desc = None
+    if 'comments' in details:
+      comm = details['comments']
+    else:
+      comm = None
+    if 'youtube_link' in details:
+      link = details['youtube_link']
+    else:
+      link = None
+    eif = ExerciseInfoForm(exercise_id, details['exercise_name'], desc, comm, link)
+    result = alert(title="Exercise Info", content=eif, large=True, buttons=[])
+
+    if result:
+      anvil.server.call("set_exercise_details_for_exercise_id", exercise_id, eif.description_text_area.text, eif.comments_text_area.text, eif.youtube_link_text_box.text)
+    

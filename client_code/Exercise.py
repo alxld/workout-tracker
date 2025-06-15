@@ -104,6 +104,13 @@ class Exercise:
   def weez_exercise_type(self, type):
     self._exerciseType['Weez'] = type
 
+  @property
+  def exercise_id(self):
+    if self._aaron_workout_exercise_id:
+      return anvil.server.call("get_exercise_id_for_workout_exercise", self._aaron_workout_exercise_id)
+    else:
+      return anvil.server.call("get_exercise_id_for_workout_exercise", self._weez_workout_exercise_id)
+      
 class Set:
   def __init__(self, setNum, prev_weight, prev_reps, set_id):
     self.setNum = setNum

@@ -27,8 +27,11 @@ class RowTemplate2(RowTemplate2Template):
 
     if results:
       print(results)
-      self.item.weight = usf.this_weight_text_box.text
-      self.item.reps   = usf.this_reps_text_box.text
+      self.item.weight = float(usf.this_weight_text_box.text)
+      self.item.reps   = int(usf.this_reps_text_box.text)
+
+      if round(self.item.weight, 0) == self.item.weight:
+        self.item.weight = int(self.item.weight)
 
       self.item.update_database()
       self.item = self.item
