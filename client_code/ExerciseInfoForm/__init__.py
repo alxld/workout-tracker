@@ -1,5 +1,6 @@
 from ._anvil_designer import ExerciseInfoFormTemplate
 from anvil import *
+import plotly.graph_objects as go
 import anvil.server
 
 class ExerciseInfoForm(ExerciseInfoFormTemplate):
@@ -23,6 +24,8 @@ class ExerciseInfoForm(ExerciseInfoFormTemplate):
       self.youtube_video.visible = False
 
     self._exercise_id = exercise_id
+
+    exercise_data = anvil.server.call("get_all_weight_rep_data_for_exercise_id", self._exercise_id, user_id=1, workout_type_id=2)
     
   def ok_button_click(self, **event_args):
     self.raise_event("x-close-alert", value=True)
