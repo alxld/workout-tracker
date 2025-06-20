@@ -14,6 +14,7 @@ class Exercise:
     self._exerciseType = {"Aaron": "UNKNOWN", "Weez": "UNKNOWN"}
     self._sets = {"Aaron": [], "Weez": []}
     self._defaultSets = 3
+    self._exercise_id = None
     self._aaron_workout_exercise_id = aaron_workout_exercise_id
     self._weez_workout_exercise_id = weez_workout_exercise_id
 
@@ -106,10 +107,19 @@ class Exercise:
 
   @property
   def exercise_id(self):
-    if self._aaron_workout_exercise_id:
-      return anvil.server.call("get_exercise_id_for_workout_exercise", self._aaron_workout_exercise_id)
+    if not self._exercise_id:
+      if self._aaron_workout_exercise_id:
+        self._exercise_id = anvil.server.call("get_exercise_id_for_workout_exercise", self._aaron_workout_exercise_id)
+      else:
+        self._exercise_id = anvil.server.call("get_exercise_id_for_workout_exercise", self._weez_workout_exercise_id)
+    
+    return self._exercise_id
+  
+  def exercise_history(self, user):
+    if user == 'aaron':
+      return anvil.server.call("get_all_weight_rep_data_for_exercise_id", self.exercise_id, 'aaron', self.aaron_exercise_type)
     else:
-      return anvil.server.call("get_exercise_id_for_workout_exercise", self._weez_workout_exercise_id)
+      return anvil.server.call("get_all_weight_rep_data_for_exercise_id", self.exercise_id, 'weez', self.weez_exercise_type)
       
 class Set:
   def __init__(self, setNum, prev_weight, prev_reps, set_id):

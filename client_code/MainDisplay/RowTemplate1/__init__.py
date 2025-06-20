@@ -1,5 +1,6 @@
 from ._anvil_designer import RowTemplate1Template
 from anvil import *
+import plotly.graph_objects as go
 
 
 class RowTemplate1(RowTemplate1Template):
@@ -13,3 +14,9 @@ class RowTemplate1(RowTemplate1Template):
     self.exercise_details_1.weez_exercise_type.text = self.item.weez_exercise_type
     self.set_details_aaron.repeating_panel_1.items = self.item['aaron']
     self.set_details_weez.repeating_panel_1.items = self.item['weez']
+
+    self.ex_history = {}
+    self.ex_history['aaron'] = self.item.exercise_history('aaron')
+    self.ex_history['weez']  = self.item.exercise_history('weez')
+
+    print()

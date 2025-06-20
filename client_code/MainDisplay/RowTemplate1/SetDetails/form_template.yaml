@@ -21,6 +21,10 @@ components:
       spacing_below: none
       visible: true
     type: DataGrid
+  - layout_properties: {grid_position: 'GVSGTV,RQVCJY'}
+    name: plot_1
+    properties: {height: 171}
+    type: Plot
   layout_properties: {full_width_row: true, grid_position: 'OSECHP,LCRAIG'}
   name: column_panel_1
   properties: {border: '', col_spacing: small, role: card, spacing_above: none, spacing_below: none}
