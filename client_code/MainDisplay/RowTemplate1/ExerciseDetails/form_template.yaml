@@ -64,7 +64,8 @@ components:
         padding: ['0', '20', '0', '20']
       text: ''
     type: Button
-  - layout_properties: {grid_position: 'RGXYAR,VPZYXF'}
+  - event_bindings: {click: aaron_history_button_click}
+    layout_properties: {grid_position: 'RGXYAR,VPZYXF'}
     name: aaron_history_button
     properties:
       font_size: 17

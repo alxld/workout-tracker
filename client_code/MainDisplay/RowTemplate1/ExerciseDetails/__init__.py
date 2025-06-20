@@ -87,4 +87,9 @@ class ExerciseDetails(ExerciseDetailsTemplate):
 
     if result:
       anvil.server.call("set_exercise_details_for_exercise_id", exercise_id, eif.description_text_area.text, eif.comments_text_area.text, eif.youtube_link_text_box.text)
+
+  def aaron_history_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.parent._volume_toggle = not self.parent._volume_toggle
+    self.parent.updatePlots()
     
