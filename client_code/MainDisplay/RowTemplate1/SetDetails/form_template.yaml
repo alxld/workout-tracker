@@ -21,9 +21,13 @@ components:
       spacing_below: none
       visible: true
     type: DataGrid
-  - layout_properties: {grid_position: 'GVSGTV,RQVCJY'}
-    name: plot_1
-    properties: {height: 171}
+  - data_bindings: []
+    layout_properties: {grid_position: 'GVSGTV,RQVCJY'}
+    name: volume_plot
+    properties:
+      height: 302
+      interactive: false
+      margin: ['-90', null, '-60', null]
     type: Plot
   layout_properties: {full_width_row: true, grid_position: 'OSECHP,LCRAIG'}
   name: column_panel_1

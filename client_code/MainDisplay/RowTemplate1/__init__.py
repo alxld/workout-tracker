@@ -15,8 +15,22 @@ class RowTemplate1(RowTemplate1Template):
     self.set_details_aaron.repeating_panel_1.items = self.item['aaron']
     self.set_details_weez.repeating_panel_1.items = self.item['weez']
 
-    self.ex_history = {}
-    self.ex_history['aaron'] = self.item.exercise_history('aaron')
-    self.ex_history['weez']  = self.item.exercise_history('weez')
+    self.ex_set_history = {}
+    self.ex_volume_history = {}
+    self.ex_weight_history = {}
+    self.ex_reps_history = {}
+    self.ex_set_history['aaron'], self.ex_volume_history['aaron'], self.ex_weight_history['aaron'], self.ex_reps_history['aaron'] = self.item.exercise_history('aaron')
+    self.ex_set_history['weez'],  self.ex_volume_history['weez'],  self.ex_weight_history['weez'],  self.ex_reps_history['weez']  = self.item.exercise_history('weez')
 
-    print()
+    self.set_details_aaron.volume_plot.data = [
+      go.Scatter(x=list(self.ex_volume_history['aaron'].keys()), y=list(self.ex_volume_history['aaron'].values())),
+      go.Scatter(x=list(self.ex_weight_history['aaron'].keys()), y=list(self.ex_weight_history['aaron'].values())),
+      go.Scatter(x=list(self.ex_reps_history['aaron'].keys()), y=list(self.ex_reps_history['aaron'].values()))
+    ]
+    self.set_details_aaron.volume_plot.figure.update_layout(margin=dict(l=10, r=200, t=10, b=10))
+    self.set_details_aaron.volume_plot.config = {'displayModeBar': False}
+
+    self.set_details_weez.volume_plot.data = go.Scatter(x=list(self.ex_volume_history['weez'].keys()), y=list(self.ex_volume_history['weez'].values()))
+    self.set_details_weez.volume_plot.figure.update_layout(margin=dict(l=10, r=200, t=10, b=10))
+    self.set_details_weez.volume_plot.config = {'displayModeBar': False}
+

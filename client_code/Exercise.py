@@ -117,9 +117,30 @@ class Exercise:
   
   def exercise_history(self, user):
     if user == 'aaron':
-      return anvil.server.call("get_all_weight_rep_data_for_exercise_id", self.exercise_id, 'aaron', self.aaron_exercise_type)
+      to_return = anvil.server.call("get_all_weight_rep_data_for_exercise_id", self.exercise_id, 'aaron', self.aaron_exercise_type)
     else:
-      return anvil.server.call("get_all_weight_rep_data_for_exercise_id", self.exercise_id, 'weez', self.weez_exercise_type)
+      to_return = anvil.server.call("get_all_weight_rep_data_for_exercise_id", self.exercise_id, 'weez', self.weez_exercise_type)
+
+    volume_data = {}
+    weight_data = {}
+    reps_data = {}
+    for row in to_return:
+      if not row['date'] in volume_data:
+        if type(row['date']) == 'datetime':
+          row['date'] = row['date'].date()
+        volume_data[row['date']] = 0
+        weight_data[row['date']] = 0
+        reps_data[row['date']] = 0
+        
+      volume_data[row['date']] += row['weight'] * row['reps']
+      weight_data[row['date']] += row['weight']
+      reps_data[row['date']] += row['reps']
+
+    for date in weight_data:
+      weight_data[date] /= len(weight_data)
+      reps_data[date] /= len(reps_data)
+    
+    return to_return, volume_data, weight_data, reps_data
       
 class Set:
   def __init__(self, setNum, prev_weight, prev_reps, set_id):
