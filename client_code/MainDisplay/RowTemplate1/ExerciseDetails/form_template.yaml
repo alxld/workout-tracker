@@ -135,7 +135,10 @@ components:
   type: ColumnPanel
 container:
   data_bindings: []
+  event_bindings: {show: form_show}
   properties: {background: '', border: '', col_widths: '{}', foreground: '', role: null}
   type: ColumnPanel
 custom_component: true
+events: []
 is_package: true
+properties: []

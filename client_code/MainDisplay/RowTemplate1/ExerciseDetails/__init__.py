@@ -8,8 +8,6 @@ class ExerciseDetails(ExerciseDetailsTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
-    self.highlight_info_button()
     
   def aaron_add_set_button_click(self, **event_args):
     for idx in range(len(self.parent.parent.items)):
@@ -74,7 +72,7 @@ class ExerciseDetails(ExerciseDetailsTemplate):
       
     exercise_id = self.parent.item.exercise_id
     details = anvil.server.call("get_exercise_details_for_exercise_id", exercise_id)
-    if 'comments' in details:
+    if 'comments' in details and details['comments'] != None and details['comments'] != "":
       self.info_button.background = "theme:Secondary 500"
     else:
       self.info_button.background = "theme:White"
@@ -106,4 +104,9 @@ class ExerciseDetails(ExerciseDetailsTemplate):
     """This method is called when the button is clicked"""
     self.parent._volume_toggle = not self.parent._volume_toggle
     self.parent.updatePlots()
+
+  def form_show(self, **event_args):
+    """This method is called when the form is shown on the page"""
+    self.highlight_info_button()
+
     
