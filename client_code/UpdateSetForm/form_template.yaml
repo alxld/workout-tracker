@@ -18,11 +18,11 @@ components:
 - event_bindings: {change: this_weight_text_box_change}
   layout_properties: {grid_position: 'YXGLVS,LBCXLK'}
   name: this_weight_text_box
-  properties: {}
+  properties: {font_size: 25}
   type: TextBox
 - layout_properties: {grid_position: 'YXGLVS,OJRUBU'}
   name: previous_weight_text_box
-  properties: {enabled: false}
+  properties: {enabled: false, font_size: 25, foreground: '#C0C0C0'}
   type: TextBox
 - event_bindings: {click: minus_10_button_click}
   layout_properties: {grid_position: 'HGKGXI,VJCOTH'}
@@ -69,11 +69,11 @@ components:
 - event_bindings: {change: this_reps_text_box_change}
   layout_properties: {grid_position: 'LISGVX,ZHUYAZ'}
   name: this_reps_text_box
-  properties: {}
+  properties: {font_size: 25}
   type: TextBox
 - layout_properties: {grid_position: 'LISGVX,OJNWAR'}
   name: previous_reps_text_box
-  properties: {enabled: false}
+  properties: {enabled: false, font_size: 25, foreground: '#C0C0C0'}
   type: TextBox
 - data_bindings: []
   event_bindings: {change: reps_slider_change, slide: reps_slider_slide}

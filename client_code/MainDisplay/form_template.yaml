@@ -34,8 +34,17 @@ components:
   type: ColumnPanel
 - components:
   - components:
+    - layout_properties: {grid_position: 'WXXBUS,ODHTRY'}
+      name: label_1
+      properties:
+        font_size: 15
+        spacing:
+          margin: ['-10', null, '-10', null]
+          padding: ['0', null, '0', null]
+        text: Aaron
+      type: Label
     - layout_properties: {grid_position: 'ERLPKY,DCTYLL'}
-      name: timer_headline
+      name: atimer_headline
       properties:
         background: ''
         bold: true
@@ -47,7 +56,36 @@ components:
           padding: ['10', null, null, null]
         text: '  00:00'
       type: Label
-    event_bindings: {click: timer_link_click}
+    event_bindings: {click: atimer_link_click}
+    name: timer_link_copy
+    properties:
+      spacing:
+        padding: ['0', null, '8', null]
+    type: Link
+  - components:
+    - layout_properties: {grid_position: 'XOZUDY,OSVGWT'}
+      name: label_2
+      properties:
+        font_size: 15
+        spacing:
+          margin: ['-10', null, '-10', null]
+          padding: ['0', null, '0', null]
+        text: Weez
+      type: Label
+    - layout_properties: {grid_position: 'ERLPKY,DCTYLL'}
+      name: wtimer_headline
+      properties:
+        background: ''
+        bold: true
+        font_size: 55
+        icon: fa:clock-o
+        icon_align: left
+        role: headline
+        spacing:
+          padding: ['10', null, null, null]
+        text: '  00:00'
+      type: Label
+    event_bindings: {click: wtimer_link_click}
     layout_properties: {}
     name: timer_link
     properties:

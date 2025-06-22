@@ -14,8 +14,11 @@ class MainDisplay(MainDisplayTemplate):
 
     self._exercises = []
 
-    self._currTimer = datetime(2000,1,1)
-    self._timerState = "PAUSED"
+    self._AcurrTimer = datetime(2000,1,1)
+    self._WcurrTimer = datetime(2000,1,1)
+    #self._timerState = "PAUSED"
+    self._AtimerState = "PAUSED"
+    self._WtimerState = "PAUSED"
 
     #self._exercises.append(Exercise("blah", "no part"))
     self.repeating_panel_1.items = self._exercises
@@ -94,12 +97,19 @@ class MainDisplay(MainDisplayTemplate):
   def main_timer_tick(self, **event_args):
     """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""
     self.datetime_headline.text = datetime.now().strftime("%a %B %d, %Y  %-I:%M %p")
-    if self._timerState == "PLAYING":
-      self._currTimer = self._currTimer + timedelta(seconds=1)
-      if self._currTimer > datetime(2000,1,1,minute=30):
-        self._currTimer = datetime(2000,1,1)
-        self._timerState = "PAUSED"
-    self.timer_headline.text = self._currTimer.strftime("  %M:%S")
+    if self._AtimerState == "PLAYING":
+      self._AcurrTimer = self._AcurrTimer + timedelta(seconds=1)
+      if self._AcurrTimer > datetime(2000,1,1,minute=30):
+        self._AcurrTimercurrTimer = datetime(2000,1,1)
+        self._AtimerState = "PAUSED"
+    self.atimer_headline.text = self._AcurrTimer.strftime("  %M:%S")
+
+    if self._WtimerState == "PLAYING":
+      self._WcurrTimer = self._WcurrTimer + timedelta(seconds=1)
+      if self._WcurrTimer > datetime(2000,1,1,minute=30):
+        self._WcurrTimercurrTimer = datetime(2000,1,1)
+        self._WtimerState = "PAUSED"
+    self.wtimer_headline.text = self._WcurrTimer.strftime("  %M:%S")
 
   def timer_link_click(self, **event_args):
     """This method is called when the link is clicked"""
@@ -110,3 +120,23 @@ class MainDisplay(MainDisplayTemplate):
       self._currTimer = datetime(2000,1,1)
       
     self.timer_headline.text = self._currTimer.strftime("  %M:%S")
+
+  def atimer_link_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    if self._AtimerState == "PAUSED":
+      self._AtimerState = "PLAYING"
+    elif self._AtimerState == "PLAYING":
+      self._AtimerState = "PAUSED"
+      self._AcurrTimer = datetime(2000,1,1)
+
+    self.atimer_headline.text = self._AcurrTimer.strftime("  %M:%S")
+
+  def wtimer_link_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    if self._WtimerState == "PAUSED":
+      self._WtimerState = "PLAYING"
+    elif self._WtimerState == "PLAYING":
+      self._WtimerState = "PAUSED"
+      self._WcurrTimer = datetime(2000,1,1)
+
+    self.wtimer_headline.text = self._WcurrTimer.strftime("  %M:%S")

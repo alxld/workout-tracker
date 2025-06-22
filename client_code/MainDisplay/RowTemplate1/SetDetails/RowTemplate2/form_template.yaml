@@ -1,6 +1,19 @@
-components: []
+components:
+- data_bindings:
+  - {code: 'self.item[''prevWeight'']', property: text, writeback: false}
+  layout_properties: {column: FBFUPR}
+  name: prev_weight_label
+  properties: {background: '', foreground: '#C0C0C0'}
+  type: Label
+- data_bindings:
+  - {code: 'self.item[''prevReps'']', property: text, writeback: false}
+  layout_properties: {column: FNBGZU}
+  name: prev_reps_label
+  properties: {background: '', foreground: '#C0C0C0'}
+  type: Label
 container:
   properties:
+    auto_display_data: true
     bold: true
     font_size: 25
     margin: ['-15', null, '-20', null]
