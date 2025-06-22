@@ -9,8 +9,8 @@ class ExerciseDetails(ExerciseDetailsTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    # Any code you write here will run before the form opens.
-
+    self.highlight_info_button()
+    
   def aaron_add_set_button_click(self, **event_args):
     for idx in range(len(self.parent.parent.items)):
       if self.parent.item == self.parent.parent.items[idx]:
@@ -67,6 +67,18 @@ class ExerciseDetails(ExerciseDetailsTemplate):
     del self.parent.parent.items[idx]
     self.parent.parent.items = self.parent.parent.items
 
+  def highlight_info_button(self):
+    if not self.parent or not self.parent.item:
+      self.info_button.background = "theme:White"
+      return
+      
+    exercise_id = self.parent.item.exercise_id
+    details = anvil.server.call("get_exercise_details_for_exercise_id", exercise_id)
+    if 'comments' in details:
+      self.info_button.background = "theme:Secondary 500"
+    else:
+      self.info_button.background = "theme:White"
+
   def info_button_click(self, **event_args):
     exercise_id = self.parent.item.exercise_id
     details = anvil.server.call("get_exercise_details_for_exercise_id", exercise_id)
@@ -87,6 +99,8 @@ class ExerciseDetails(ExerciseDetailsTemplate):
 
     if result:
       anvil.server.call("set_exercise_details_for_exercise_id", exercise_id, eif.description_text_area.text, eif.comments_text_area.text, eif.youtube_link_text_box.text)
+
+    self.highlight_info_button()
 
   def aaron_history_button_click(self, **event_args):
     """This method is called when the button is clicked"""
