@@ -111,16 +111,31 @@ class MainDisplay(MainDisplayTemplate):
         self._WtimerState = "PAUSED"
     self.wtimer_headline.text = self._WcurrTimer.strftime("  %M:%S")
 
-  def timer_link_click(self, **event_args):
-    """This method is called when the link is clicked"""
-    if self._timerState == "PAUSED":
-      self._timerState = "PLAYING"
-    elif self._timerState == "PLAYING":
-      self._timerState = "PAUSED"
-      self._currTimer = datetime(2000,1,1)
-      
-    self.timer_headline.text = self._currTimer.strftime("  %M:%S")
+  #def timer_link_click(self, **event_args):
+  #  """This method is called when the link is clicked"""
+  #  if self._timerState == "PAUSED":
+  #    self._timerState = "PLAYING"
+  #  elif self._timerState == "PLAYING":
+  #    self._timerState = "PAUSED"
+  #    self._currTimer = datetime(2000,1,1)
+  #    
+  #  self.timer_headline.text = self._currTimer.strftime("  %M:%S")
 
+  def atimer_reset_and_run(self):
+    """ This method resets Aaron's timer to 0 and starts counting"""
+    self._AcurrTimer = datetime(2000, 1, 1)
+    self._AtimerState = "PLAYING"
+
+    self.atimer_headline.text = self._AcurrTimer.strftime("  %M:%S")
+
+  def wtimer_reset_and_run(self):
+    """ This method resets Weez's timer to 0 and starts counting"""
+    self._WcurrTimer = datetime(2000, 1, 1)
+    self._WtimerState = "PLAYING"
+
+    self.wtimer_headline.text = self._WcurrTimer.strftime("  %M:%S")
+
+  
   def atimer_link_click(self, **event_args):
     """This method is called when the link is clicked"""
     if self._AtimerState == "PAUSED":

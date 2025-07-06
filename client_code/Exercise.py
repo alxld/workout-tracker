@@ -25,7 +25,7 @@ class Exercise:
       if aaron_sets:
         for set in aaron_sets:
           prev_weight, prev_reps = anvil.server.call("get_previous_set_weight_reps", set[0])
-          newset = Set(set[3], prev_weight, prev_reps, set[0])
+          newset = Set(set[3], prev_weight, prev_reps, set[0], "Aaron")
           if set[1]:
             newset.weight = set[1]
           if set[2]:
@@ -35,7 +35,7 @@ class Exercise:
       if weez_sets:
         for set in weez_sets:
           prev_weight, prev_reps = anvil.server.call("get_previous_set_weight_reps", set[0])
-          newset = Set(set[3], prev_weight, prev_reps, set[0])
+          newset = Set(set[3], prev_weight, prev_reps, set[0], "Weez")
           if set[1]:
             newset.weight = set[1]
           if set[2]:
@@ -64,7 +64,7 @@ class Exercise:
       wid = self._weez_workout_exercise_id
     set_id = anvil.server.call("add_set_to_exercise", wid, len(self._sets[user])+1)
     prev_weight, prev_reps = anvil.server.call("get_previous_set_weight_reps", set_id)
-    newset = Set(len(self._sets[user])+1, prev_weight, prev_reps, set_id)
+    newset = Set(len(self._sets[user])+1, prev_weight, prev_reps, set_id, user)
     self._sets[user].append(newset)
     return newset
 
@@ -143,13 +143,14 @@ class Exercise:
     return to_return, volume_data, weight_data, reps_data
       
 class Set:
-  def __init__(self, setNum, prev_weight, prev_reps, set_id):
+  def __init__(self, setNum, prev_weight, prev_reps, set_id, user):
     self.setNum = setNum
     self.weight = 0
     self.reps = 0
     self.prevWeight = prev_weight
     self.prevReps = prev_reps
     self.set_id = set_id
+    self.user = user
 
   def __getitem__(self, key):
     if key == "setNum":

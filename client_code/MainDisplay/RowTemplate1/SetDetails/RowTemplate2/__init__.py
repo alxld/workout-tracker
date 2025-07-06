@@ -1,4 +1,5 @@
 from ._anvil_designer import RowTemplate2Template
+from .... import MainDisplay
 from .....UpdateSetForm import UpdateSetForm
 from anvil_extras import augment
 from anvil import *
@@ -35,3 +36,9 @@ class RowTemplate2(RowTemplate2Template):
 
       self.item.update_database()
       self.item = self.item
+
+      if self.item.user == "Aaron":
+        self.parent.parent.parent.parent.parent.parent.parent.parent.parent.atimer_reset_and_run()
+      else:
+        self.parent.parent.parent.parent.parent.parent.parent.parent.parent.wtimer_reset_and_run()
+      
