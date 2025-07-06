@@ -21,6 +21,13 @@ class RowTemplate2(RowTemplate2Template):
       this_reps = self.item.reps
     else:
       this_reps = self.item.prevReps
+
+    if this_weight == 0 and this_reps == 0:
+      this_idx = self.parent.items.index(self.item)
+      if this_idx > 0:
+        prev_item = self.parent.items[this_idx - 1]
+        this_weight = prev_item.weight
+        this_reps   = prev_item.reps
       
     usf = UpdateSetForm(self.item.prevWeight, self.item.prevReps, this_weight, this_reps)
     #results = alert(content=usf, title="Update Set", large=True, buttons=[("OK", True), ("Cancel", False)], role="large-alert-button-text")
