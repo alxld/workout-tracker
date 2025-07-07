@@ -21,7 +21,7 @@ class MainDisplay(MainDisplayTemplate):
     self._WtimerState = "PAUSED"
 
     #self._exercises.append(Exercise("blah", "no part"))
-    self.repeating_panel_1.items = self._exercises
+    self.repeating_panel_1.items = self.reorder_completed_exercises(self._exercises)
 
     #self.body_parts = anvil.server.call("get_body_parts")
     #print(self.body_parts)
@@ -44,22 +44,41 @@ class MainDisplay(MainDisplayTemplate):
       if anvil.server.call("workout_has_exercise", workout_id, exercise):
         alert("Exercise already in workout!")
         return
-              
-      aaron_workout_exercise_id = anvil.server.call("add_exercise_to_workout", workout_id, exercise, aaron_exercise_type, len(self._exercises), "Aaron")
-      #print(f"Aaron's Workout Exercise ID: {aaron_workout_exercise_id}")
-      weez_workout_exercise_id = anvil.server.call("add_exercise_to_workout", workout_id, exercise, weez_exercise_type, len(self._exercises), "Weez")
-      #print(f"Weez's Workout Exercise ID: {weez_workout_exercise_id}")
+
+      if aaron_exercise_type != "None":
+        aaron_workout_exercise_id = anvil.server.call("add_exercise_to_workout", workout_id, exercise, aaron_exercise_type, len(self._exercises), "Aaron")
+      else:
+        aaron_workout_exercise_id = -1
+      if weez_exercise_type != "None":
+        weez_workout_exercise_id = anvil.server.call("add_exercise_to_workout", workout_id, exercise, weez_exercise_type, len(self._exercises), "Weez")
+      else:
+        weez_workout_exercise_id = -1
 
       this_ex = Exercise(exercise, body_part, aaron_workout_exercise_id, weez_workout_exercise_id)
-      this_ex.aaron_exercise_type = aaron_exercise_type
-      this_ex.weez_exercise_type = weez_exercise_type
+
+      if aaron_exercise_type != "None":
+        this_ex.aaron_exercise_type = aaron_exercise_type
+      if weez_exercise_type != "None":
+        this_ex.weez_exercise_type = weez_exercise_type
       #this_ex.addSet("Aaron")
       self._exercises.append(this_ex)
-      self.repeating_panel_1.items = self._exercises
+      self.repeating_panel_1.items = self.reorder_completed_exercises(self._exercises)
       
   def edit_db_button_click(self, **event_args):
     ud_form = UpdateDatabaseForm()
     result = alert(title="Update Database", content=ud_form)
+
+  def reorder_completed_exercises(self, exercises):
+    incomplete_exercises = []
+    complete_exercises = []
+
+    for exercise in exercises:
+      if exercise.is_complete:
+        complete_exercises.append(exercise)
+      else:
+        incomplete_exercises.append(exercise)
+    
+    return incomplete_exercises + complete_exercises
 
   def new_workout_click(self, **event_args):
     global workout_id
@@ -92,7 +111,7 @@ class MainDisplay(MainDisplayTemplate):
         this_ex.weez_exercise_type = anvil.server.call("get_exercise_type_for_exercise_id", weez_workout_exercise_id)
         self._exercises.append(this_ex)
       if curr_exs:
-        self.repeating_panel_1.items = self._exercises
+        self.repeating_panel_1.items = self.reorder_completed_exercises(self._exercises)
 
   def main_timer_tick(self, **event_args):
     """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""

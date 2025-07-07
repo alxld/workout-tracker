@@ -19,13 +19,15 @@ class Exercise:
     self._weez_workout_exercise_id = weez_workout_exercise_id
 
     if from_db:
-      aaron_sets = anvil.server.call("get_sets_for_exercise_id", aaron_workout_exercise_id)
-      weez_sets = anvil.server.call("get_sets_for_exercise_id", weez_workout_exercise_id)
+      if aaron_workout_exercise_id != -1:
+        aaron_sets = anvil.server.call("get_sets_for_exercise_id", aaron_workout_exercise_id)
+      if weez_workout_exercise_id != -1:
+        weez_sets = anvil.server.call("get_sets_for_exercise_id", weez_workout_exercise_id)
 
       if aaron_sets:
         for set in aaron_sets:
           prev_weight, prev_reps = anvil.server.call("get_previous_set_weight_reps", set[0])
-          newset = Set(set[3], prev_weight, prev_reps, set[0], "Aaron")
+          newset = Set(set[3], prev_weight, prev_reps, set[0], "Aaron", self)
           if set[1]:
             newset.weight = set[1]
           if set[2]:
@@ -35,7 +37,7 @@ class Exercise:
       if weez_sets:
         for set in weez_sets:
           prev_weight, prev_reps = anvil.server.call("get_previous_set_weight_reps", set[0])
-          newset = Set(set[3], prev_weight, prev_reps, set[0], "Weez")
+          newset = Set(set[3], prev_weight, prev_reps, set[0], "Weez", self)
           if set[1]:
             newset.weight = set[1]
           if set[2]:
@@ -44,8 +46,10 @@ class Exercise:
     
     else:
       for i in range(self._defaultSets):
-        self.addSet('Aaron')
-        self.addSet('Weez')
+        if aaron_workout_exercise_id != -1:
+          self.addSet('Aaron')
+        if weez_workout_exercise_id != -1:
+          self.addSet('Weez')
 
   def __getitem__(self, key):
     if key == "name":
@@ -64,7 +68,7 @@ class Exercise:
       wid = self._weez_workout_exercise_id
     set_id = anvil.server.call("add_set_to_exercise", wid, len(self._sets[user])+1)
     prev_weight, prev_reps = anvil.server.call("get_previous_set_weight_reps", set_id)
-    newset = Set(len(self._sets[user])+1, prev_weight, prev_reps, set_id, user)
+    newset = Set(len(self._sets[user])+1, prev_weight, prev_reps, set_id, user, self)
     self._sets[user].append(newset)
     return newset
 
@@ -78,6 +82,15 @@ class Exercise:
     self._sets[user] = self._sets[user][:-1]
     anvil.server.call("remove_set_from_exercise", set_id)
 
+  @property
+  def is_complete(self):
+    for set in self._sets['Aaron'] + self._sets['Weez']:
+      if not set.is_complete:
+        return False
+
+    # Fall through to True
+    return True
+  
   def remove_from_database(self):
     for set in self._sets['Aaron'] + self._sets['Weez']:
       set.remove_from_database()
@@ -143,7 +156,7 @@ class Exercise:
     return to_return, volume_data, weight_data, reps_data
       
 class Set:
-  def __init__(self, setNum, prev_weight, prev_reps, set_id, user):
+  def __init__(self, setNum, prev_weight, prev_reps, set_id, user, exercise):
     self.setNum = setNum
     self.weight = 0
     self.reps = 0
@@ -151,6 +164,7 @@ class Set:
     self.prevReps = prev_reps
     self.set_id = set_id
     self.user = user
+    self.exercise = exercise
 
   def __getitem__(self, key):
     if key == "setNum":
@@ -166,6 +180,13 @@ class Set:
 
     raise Exception(f"{key} not found in Set object")
 
+  @property
+  def is_complete(self):
+    if self.weight != 0 and self.reps != 0:
+      return True
+    else:
+      return False
+  
   def update_database(self):
     anvil.server.call("update_set_weight_reps", self.set_id, self.weight, self.reps)
 

@@ -15,8 +15,10 @@ class AddExerciseForm(AddExerciseFormTemplate):
     self.exercise_drop_down.items = exercises
 
     workout_type_names = anvil.server.call("get_workout_type_names")
-    self.aaron_exercise_type_drop_down.items = workout_type_names
-    self.weez_exercise_type_drop_down.items  = workout_type_names
+    self.aaron_exercise_type_drop_down.items = workout_type_names + ['None']
+    self.weez_exercise_type_drop_down.items  = workout_type_names + ['None']
+    self.aaron_exercise_type_drop_down.selected_value = "High Reps"
+    self.weez_exercise_type_drop_down.selected_value  = "High Reps"
 
   def body_part_drop_down_change(self, **event_args):
     bp = self.body_part_drop_down.selected_value

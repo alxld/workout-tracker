@@ -32,7 +32,7 @@ components:
   name: aaron_exercise_type_drop_down
   properties:
     font_size: 25
-    items: [High Rep, Med Rep, High Weight]
+    items: [High Rep, Med Rep, High Weight, None]
   type: DropDown
 - layout_properties: {grid_position: 'KXQPCX,UGTFDQ'}
   name: label_4
@@ -42,7 +42,7 @@ components:
   name: weez_exercise_type_drop_down
   properties:
     font_size: 25
-    items: [High Rep, Med Rep, High Weight]
+    items: [High Rep, Med Rep, High Weight, None]
   type: DropDown
 - event_bindings: {click: ok_button_click}
   layout_properties: {grid_position: 'LOFYUF,EKMSHR'}
