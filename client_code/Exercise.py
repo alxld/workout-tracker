@@ -8,7 +8,7 @@ import anvil.server
 #
 
 class Exercise:
-  def __init__(self, name, body_part, aaron_workout_exercise_id, weez_workout_exercise_id, from_db=False):
+  def __init__(self, name, body_part, aaron_workout_exercise_id, weez_workout_exercise_id, exercise_order, from_db=False):
     self._name = name
     self._body_part = body_part
     self._exerciseType = {"Aaron": "UNKNOWN", "Weez": "UNKNOWN"}
@@ -17,12 +17,16 @@ class Exercise:
     self._exercise_id = None
     self._aaron_workout_exercise_id = aaron_workout_exercise_id
     self._weez_workout_exercise_id = weez_workout_exercise_id
+    self._exercise_order = -1
 
     if from_db:
       if aaron_workout_exercise_id != -1:
         aaron_sets = anvil.server.call("get_sets_for_exercise_id", aaron_workout_exercise_id)
+        self._exercise_order = anvil.server.call("get_exercise_order_for_workout_exercise_id", aaron_workout_exercise_id)
       if weez_workout_exercise_id != -1:
         weez_sets = anvil.server.call("get_sets_for_exercise_id", weez_workout_exercise_id)
+        if self._exercise_id == -1:
+          self._exercise_order = anvil.server.call("get_exercise_order_for_workout_exercise_id", weez_workout_exercise_id)
 
       if aaron_sets:
         for set in aaron_sets:

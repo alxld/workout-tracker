@@ -45,16 +45,19 @@ class MainDisplay(MainDisplayTemplate):
         alert("Exercise already in workout!")
         return
 
+      exercise_order = 0
       if aaron_exercise_type != "None":
         aaron_workout_exercise_id = anvil.server.call("add_exercise_to_workout", workout_id, exercise, aaron_exercise_type, len(self._exercises), "Aaron")
+        exercise_order = anvil.server.call("get_exercise_order_for_workout_exercise_id", aaron_workout_exercise_id)
       else:
         aaron_workout_exercise_id = -1
       if weez_exercise_type != "None":
         weez_workout_exercise_id = anvil.server.call("add_exercise_to_workout", workout_id, exercise, weez_exercise_type, len(self._exercises), "Weez")
+        exercise_order = anvil.server.call("get_exercise_order_for_workout_exercise_id", weez_workout_exercise_id)
       else:
         weez_workout_exercise_id = -1
 
-      this_ex = Exercise(exercise, body_part, aaron_workout_exercise_id, weez_workout_exercise_id)
+      this_ex = Exercise(exercise, body_part, aaron_workout_exercise_id, weez_workout_exercise_id, exercise_order)
 
       if aaron_exercise_type != "None":
         this_ex.aaron_exercise_type = aaron_exercise_type
@@ -72,7 +75,7 @@ class MainDisplay(MainDisplayTemplate):
     incomplete_exercises = []
     complete_exercises = []
 
-    for exercise in exercises:
+    for exercise in sorted(exercises, key=lambda e: e._exercise_order):
       if exercise.is_complete:
         complete_exercises.append(exercise)
       else:
@@ -105,8 +108,12 @@ class MainDisplay(MainDisplayTemplate):
         ex_name = anvil.server.call("get_exercise_name_for_exercise_id", ex_id)
         aaron_workout_exercise_id = anvil.server.call("get_workout_exercise_for_user", workout_id, ex_id, "Aaron")
         weez_workout_exercise_id = anvil.server.call("get_workout_exercise_for_user", workout_id, ex_id, "Weez")
+        if aaron_workout_exercise_id != -1:
+          exercise_order = anvil.server.call("get_exercise_order_for_workout_exercise_id", aaron_workout_exercise_id)
+        else:
+          exercise_order = anvil.server.call("get_exercise_order_for_workout_exercise_id", weez_workout_exercise_id)
         body_part = anvil.server.call("get_body_part_for_exercise", ex_id)
-        this_ex = Exercise(ex_name, body_part, aaron_workout_exercise_id, weez_workout_exercise_id, from_db=True)
+        this_ex = Exercise(ex_name, body_part, aaron_workout_exercise_id, weez_workout_exercise_id, exercise_order, from_db=True)
         this_ex.aaron_exercise_type = anvil.server.call("get_exercise_type_for_exercise_id", aaron_workout_exercise_id)
         this_ex.weez_exercise_type = anvil.server.call("get_exercise_type_for_exercise_id", weez_workout_exercise_id)
         self._exercises.append(this_ex)
