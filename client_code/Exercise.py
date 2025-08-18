@@ -96,7 +96,10 @@ class Exercise:
     return True
   
   def remove_from_database(self):
+    print("Removing exercise from workout")
+    
     for set in self._sets['Aaron'] + self._sets['Weez']:
+      print(f"Set: {set}")
       set.remove_from_database()
 
     anvil.server.call("remove_exercise_from_workout", self._aaron_workout_exercise_id)
