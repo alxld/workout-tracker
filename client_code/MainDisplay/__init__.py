@@ -100,6 +100,7 @@ class MainDisplay(MainDisplayTemplate):
       workout_date = awf.add_workout_date_picker.date
       workout_notes = awf.workout_notes_text_area.text
 
+      print(f"Date: {workout_date}")
       workout_id = anvil.server.call("add_workout", workout_date, workout_notes)
       print(f"Workout ID: {workout_id}")
 
