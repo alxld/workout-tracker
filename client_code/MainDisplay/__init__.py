@@ -74,9 +74,9 @@ class MainDisplay(MainDisplayTemplate):
   def reorder_completed_exercises(self, exercises):
     incomplete_exercises = []
     complete_exercises = []
-    print(f"Starting exercises:  {','.join([ e.name for e in exercises ])}")
-    print(f"Starting incomplete: {','.join([ e.name for e in incomplete_exercises ])}")
-    print(f"Starting complete:   {','.join([ e.name for e in complete_exercises ])}")
+    print(f"Starting exercises:  {', '.join([ e.name for e in exercises ])}")
+    print(f"Starting incomplete: {', '.join([ e.name for e in incomplete_exercises ])}")
+    print(f"Starting complete:   {', '.join([ e.name for e in complete_exercises ])}")
     
     for exercise in sorted(exercises, key=lambda e: e._exercise_order):
       if exercise.is_complete:
@@ -85,9 +85,9 @@ class MainDisplay(MainDisplayTemplate):
         incomplete_exercises.append(exercise)
 
     all = incomplete_exercises + complete_exercises
-    print(f"Ending incomplete:   {','.join([ e.name for e in incomplete_exercises ])}")
-    print(f"Ending complete:     {','.join([ e.name for e in complete_exercises ])}")
-    print(f"Ending all:          {','.join([ e.name for e in all ])}")
+    print(f"Ending incomplete:   {', '.join([ e.name for e in incomplete_exercises ])}")
+    print(f"Ending complete:     {', '.join([ e.name for e in complete_exercises ])}")
+    print(f"Ending all:          {', '.join([ e.name for e in all ])}")
     
     #return incomplete_exercises + complete_exercises
     return all
