@@ -12,24 +12,20 @@ class RowTemplate2(RowTemplate2Template):
     augment.set_event_handler(self, 'click', self.row_click)
 
   def row_click(self, **event_args):
-    if self.item.weight:
-      this_weight = self.item.weight
+    if (not self.item.weight and not self.item.reps) or (self.item.weight == 0 and self.item.reps == 0):
+      this_idx = self.parent.items.index(self.item)
+
+      if this_idx == 0:
+        this_weight = self.item.prevWeight
+        this_reps   = self.item.prevReps
+      else:
+        this_weight = self.parent.items[this_idx - 1].weight
+        this_reps   = self.parent.items[this_idx - 1].reps
     else:
       this_weight = self.item.prevWeight
-      
-    if self.item.reps:
-      this_reps = self.item.reps
-    else:
-      this_reps = self.item.prevReps
+      this_reps   = self.item.prevReps
 
-    if this_weight == 0 and this_reps == 0:
-      this_idx = self.parent.items.index(self.item)
-      if this_idx > 0:
-        prev_item = self.parent.items[this_idx - 1]
-        this_weight = prev_item.weight
-        this_reps   = prev_item.reps
-
-    exercise_complete_before = self.item.exercise.is_complete
+    #exercise_complete_before = self.item.exercise.is_complete
     usf = UpdateSetForm(self.item.prevWeight, self.item.prevReps, this_weight, this_reps)
     #results = alert(content=usf, title="Update Set", large=True, buttons=[("OK", True), ("Cancel", False)], role="large-alert-button-text")
     results = alert(content=usf, title="Update Set", large=True, buttons=[])
