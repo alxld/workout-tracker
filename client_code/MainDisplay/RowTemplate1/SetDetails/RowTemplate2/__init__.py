@@ -54,4 +54,6 @@ class RowTemplate2(RowTemplate2Template):
         md.wtimer_reset_and_run()
 
       if exercise_complete_after: # and not exercise_complete_before:
+        print("BEFORE REORDER")
         self.parent.parent.parent.parent.parent.parent.items = md.reorder_completed_exercises(self.parent.parent.parent.parent.parent.parent.items)
+        print("AFTER REORDER")
