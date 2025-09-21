@@ -74,27 +74,20 @@ class MainDisplay(MainDisplayTemplate):
   def reorder_completed_exercises(self, exercises):
     incomplete_exercises = []
     complete_exercises = []
-    print("Starting exercises:")
-    for e in exercises:
-      print(f"   {e.name}")
-
+    print(f"Starting exercises:  {','.join([ e.name for e in exercises ])}")
+    print(f"Starting incomplete: {','.join([ e.name for e in incomplete_exercises ])}")
+    print(f"Starting complete:   {','.join([ e.name for e in complete_exercises ])}")
+    
     for exercise in sorted(exercises, key=lambda e: e._exercise_order):
       if exercise.is_complete:
         complete_exercises.append(exercise)
       else:
         incomplete_exercises.append(exercise)
 
-    print("Incomplete:")
-    for e in incomplete_exercises:
-      print(f"  {e.name}")
-    print("Complete:")
-    for e in complete_exercises:
-      print(f"  {e.name}")
-
-    all = incomplete_exercises + complete_exercises
-    for e in all:
-      print(f"  {e.name}")
-
+    print(f"Ending incomplete:   {','.join([ e.name for e in incomplete_exercises ])}")
+    print(f"Ending complete:     {','.join([ e.name for e in complete_exercises ])}")
+    print(f"Ending all:          {','.join([ e.name for e in all ])}")
+    
     #return incomplete_exercises + complete_exercises
     return all
 
