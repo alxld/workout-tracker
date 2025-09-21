@@ -74,9 +74,9 @@ class MainDisplay(MainDisplayTemplate):
   def reorder_completed_exercises(self, exercises):
     incomplete_exercises = []
     complete_exercises = []
-    print(f"Starting exercises:  {', '.join([ e.name for e in exercises ])}")
-    print(f"Starting incomplete: {', '.join([ e.name for e in incomplete_exercises ])}")
-    print(f"Starting complete:   {', '.join([ e.name for e in complete_exercises ])}")
+    #print(f"Starting exercises:  {', '.join([ e.name for e in exercises ])}")
+    #print(f"Starting incomplete: {', '.join([ e.name for e in incomplete_exercises ])}")
+    #print(f"Starting complete:   {', '.join([ e.name for e in complete_exercises ])}")
     
     for exercise in sorted(exercises, key=lambda e: e._exercise_order):
       if exercise.is_complete:
@@ -85,11 +85,10 @@ class MainDisplay(MainDisplayTemplate):
         incomplete_exercises.append(exercise)
 
     all = incomplete_exercises + complete_exercises
-    print(f"Ending incomplete:   {', '.join([ e.name for e in incomplete_exercises ])}")
-    print(f"Ending complete:     {', '.join([ e.name for e in complete_exercises ])}")
-    print(f"Ending all:          {', '.join([ e.name for e in all ])}")
+    #print(f"Ending incomplete:   {', '.join([ e.name for e in incomplete_exercises ])}")
+    #print(f"Ending complete:     {', '.join([ e.name for e in complete_exercises ])}")
+    #print(f"Ending all:          {', '.join([ e.name for e in all ])}")
     
-    #return incomplete_exercises + complete_exercises
     return all
 
   def new_workout_click(self, **event_args):
@@ -138,6 +137,11 @@ class MainDisplay(MainDisplayTemplate):
       if self._AcurrTimer > datetime(2000,1,1,minute=30):
         self._AcurrTimercurrTimer = datetime(2000,1,1)
         self._AtimerState = "PAUSED"
+      
+      if self._AcurrTimer > datetime(2000,1,1,minute=3):
+        self.atimer_headline.foreground = 'theme:Secondary 500'
+      else:
+        self.atimer_headline.foreground = ''
     self.atimer_headline.text = self._AcurrTimer.strftime("  %M:%S")
 
     if self._WtimerState == "PLAYING":
@@ -145,6 +149,11 @@ class MainDisplay(MainDisplayTemplate):
       if self._WcurrTimer > datetime(2000,1,1,minute=30):
         self._WcurrTimercurrTimer = datetime(2000,1,1)
         self._WtimerState = "PAUSED"
+
+      if self._WcurrTimer > datetime(2000,1,1,minute=3):
+        self.wtimer_headline.foreground = 'theme:Secondary 500'
+      else:
+        self.wtimer_headline.foreground = ''
     self.wtimer_headline.text = self._WcurrTimer.strftime("  %M:%S")
 
   #def timer_link_click(self, **event_args):
