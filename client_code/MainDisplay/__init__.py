@@ -73,7 +73,10 @@ class MainDisplay(MainDisplayTemplate):
 
   def reorder_completed_exercises(self, exercises):
     incomplete_exercises = []
-    complete_exercises = []
+    complete_exercises = []a
+    print("Starting exercises:")
+    for e in exercises:
+      print(f"   {e.name}")
 
     for exercise in sorted(exercises, key=lambda e: e._exercise_order):
       if exercise.is_complete:
