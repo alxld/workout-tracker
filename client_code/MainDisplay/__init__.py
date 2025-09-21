@@ -80,8 +80,20 @@ class MainDisplay(MainDisplayTemplate):
         complete_exercises.append(exercise)
       else:
         incomplete_exercises.append(exercise)
-    
-    return incomplete_exercises + complete_exercises
+
+    print("Incomplete:")
+    for e in incomplete_exercises:
+      print(f"  {e.name}")
+    print("Complete:")
+    for e in complete_exercises:
+      print(f"  {e.name}")
+
+    all = incomplete_exercises + complete_exercises
+    for e in all:
+      print(f"  {e.name}")
+
+    #return incomplete_exercises + complete_exercises
+    return all
 
   def new_workout_click(self, **event_args):
     global workout_id
