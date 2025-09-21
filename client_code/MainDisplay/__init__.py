@@ -84,6 +84,7 @@ class MainDisplay(MainDisplayTemplate):
       else:
         incomplete_exercises.append(exercise)
 
+    all = incomplete_exercises + complete_exercises
     print(f"Ending incomplete:   {','.join([ e.name for e in incomplete_exercises ])}")
     print(f"Ending complete:     {','.join([ e.name for e in complete_exercises ])}")
     print(f"Ending all:          {','.join([ e.name for e in all ])}")
