@@ -24,7 +24,7 @@ class RowTemplate2(RowTemplate2Template):
     else:
       this_weight = self.item.prevWeight
       this_reps   = self.item.prevReps
-
+    
     #exercise_complete_before = self.item.exercise.is_complete
     usf = UpdateSetForm(self.item.prevWeight, self.item.prevReps, this_weight, this_reps)
     #results = alert(content=usf, title="Update Set", large=True, buttons=[("OK", True), ("Cancel", False)], role="large-alert-button-text")
