@@ -73,7 +73,7 @@ class MainDisplay(MainDisplayTemplate):
 
   def reorder_completed_exercises(self, exercises):
     incomplete_exercises = []
-    complete_exercises = []a
+    complete_exercises = []
     print("Starting exercises:")
     for e in exercises:
       print(f"   {e.name}")
