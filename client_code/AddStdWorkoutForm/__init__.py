@@ -26,8 +26,29 @@ class AddStdWorkoutForm(AddStdWorkoutFormTemplate):
 
   def add_legs_1_button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    self.md.add_exercise_button_click(body_part='Back', exercise='Single Arm Lat Pull')
-    self.md.add_exercise_button_click(body_part='Back', exercise='Narrow Seated Row')
-    self.md.add_exercise_button_click(body_part='Arms', exercise='Hammer Curl')
-    self.md.add_exercise_button_click(body_part='Back', exercise='Seated Reverse DB Fly')
+    self.md.add_exercise_button_click(body_part='Quads', exercise='Squat')
+    self.md.add_exercise_button_click(body_part='Hamstrings', exercise='DB Romanian Deadlift')
+    self.md.add_exercise_button_click(body_part='Core', exercise='Plank')
+    self.md.add_exercise_button_click(body_part='Core', exercise='DB Suitcase Carry Uneven')
+
+  def add_push_2_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.md.add_exercise_button_click(body_part='Chest', exercise='BB Incline Press')
+    self.md.add_exercise_button_click(body_part='Chest', exercise='DB Decline Press')
+    self.md.add_exercise_button_click(body_part='Shoulders', exercise='Shoulder Press')
+    self.md.add_exercise_button_click(body_part='Shoulders', exercise='DB Front/Side Raises')
+
+  def add_pull_2_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.md.add_exercise_button_click(body_part='Back', exercise='Bent Row')
+    self.md.add_exercise_button_click(body_part='Back', exercise='Overhead DB Pullover')
+    self.md.add_exercise_button_click(body_part='Arms', exercise='Cable One-Arm Curl')
+    self.md.add_exercise_button_click(body_part='Shoulders', exercise='Wide Grip BB Upright Row')
+
+  def add_legs_2_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.md.add_exercise_button_click(body_part='Hamstrings', exercise='Side Lunge')
+    self.md.add_exercise_button_click(body_part='Calves', exercise='DB Single Calf Raise')
+    self.md.add_exercise_button_click(body_part='Core', exercise='Side Plank')
+    self.md.add_exercise_button_click(body_part='Core', exercise='Leg Lifts')
 
