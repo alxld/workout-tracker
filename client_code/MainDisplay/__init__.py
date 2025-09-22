@@ -112,6 +112,8 @@ class MainDisplay(MainDisplayTemplate):
       print(f"Date: {workout_date}")
       workout_id = anvil.server.call("add_workout", workout_date, workout_notes)
       print(f"Workout ID: {workout_id}")
+      self.add_exercise_button.enabled = True
+      self.add_workout_button.enabled = True
 
       curr_exs = anvil.server.call("get_workout_exercises", workout_id)
       for ex_id in curr_exs:
@@ -205,4 +207,4 @@ class MainDisplay(MainDisplayTemplate):
   def add_workout_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     asw_form = AddStdWorkoutForm(md=self)
-    alert(title="Add Workout Template", content=asw_form, buttons=[])
+    alert(title="Add Workout Template", content=asw_form, large=True, buttons=[])
