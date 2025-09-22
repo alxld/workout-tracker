@@ -1,6 +1,7 @@
 from ._anvil_designer import MainDisplayTemplate
 from ..AddExerciseForm import AddExerciseForm
 from ..UpdateDatabaseForm import UpdateDatabaseForm
+from ..AddStdWorkoutForm import AddStdWorkoutForm
 from ..Exercise import Exercise, Set
 from ..AddWorkoutForm import AddWorkoutForm
 from anvil import *
@@ -27,9 +28,9 @@ class MainDisplay(MainDisplayTemplate):
     #print(self.body_parts)
  
   
-  def add_exercise_button_click(self, **event_args):
+  def add_exercise_button_click(self, body_part=None, exercise=None, **event_args):
     # Pull up AddExerciseForm to get new exercise details
-    aef = AddExerciseForm()
+    aef = AddExerciseForm(body_part=body_part, exercise=exercise)
     result = alert(title="Add Exercise", content=aef, large=True, buttons=[])
 
     body_part = aef.body_part_drop_down.selected_value
@@ -69,7 +70,7 @@ class MainDisplay(MainDisplayTemplate):
       
   def edit_db_button_click(self, **event_args):
     ud_form = UpdateDatabaseForm()
-    result = alert(title="Update Database", content=ud_form)
+    alert(title="Update Database", content=ud_form)
 
   def reorder_completed_exercises(self, exercises):
     incomplete_exercises = []
@@ -200,3 +201,8 @@ class MainDisplay(MainDisplayTemplate):
       self._WcurrTimer = datetime(2000,1,1)
 
     self.wtimer_headline.text = self._WcurrTimer.strftime("  %M:%S")
+
+  def add_workout_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    asw_form = AddStdWorkoutForm(md=self)
+    alert(title="Add Workout Template", content=asw_form, buttons=[])

@@ -28,6 +28,11 @@ components:
     name: edit_db_button
     properties: {bold: true, font_size: 25, role: raised, text: Edit Database}
     type: Button
+  - event_bindings: {click: add_workout_button_click}
+    layout_properties: {grid_position: 'KUMPUH,QQEBVN'}
+    name: add_workout_button
+    properties: {bold: true, font_size: 25, role: raised, text: Add Workout}
+    type: Button
   layout_properties: {slot: default}
   name: content_panel
   properties: {}

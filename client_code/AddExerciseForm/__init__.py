@@ -4,15 +4,19 @@ import anvil.server
 
 
 class AddExerciseForm(AddExerciseFormTemplate):
-  def __init__(self, **properties):
+  def __init__(self, body_part=None, exercise=None, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
     self.body_part_drop_down.items = anvil.server.call("get_body_parts")
+    if body_part:
+      self.body_part_drop_down.selected_value = body_part
 
     bp = self.body_part_drop_down.selected_value
     exercises = anvil.server.call("get_exercise_for_body_part", bp)
     self.exercise_drop_down.items = exercises
+    if exercise:
+      self.exercise_drop_down.selected_value = exercise
 
     workout_type_names = anvil.server.call("get_workout_type_names")
     self.aaron_exercise_type_drop_down.items = workout_type_names + ['None']

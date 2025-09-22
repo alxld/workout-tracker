@@ -1,0 +1,33 @@
+components:
+- event_bindings: {click: add_push1_button_click}
+  layout_properties: {grid_position: 'XSSIWG,OYAUSF'}
+  name: add_push1_button
+  properties: {bold: true, font_size: 25, role: raised, text: Add Push 1}
+  type: Button
+- event_bindings: {}
+  layout_properties: {grid_position: 'XSSIWG,MDOMHX'}
+  name: add_push_2_button
+  properties: {bold: true, font_size: 25, role: raised, text: Add Push 2}
+  type: Button
+- event_bindings: {click: add_pull_1_button_click}
+  layout_properties: {grid_position: 'TCWSKA,VVKZRN'}
+  name: add_pull_1_button
+  properties: {bold: true, font_size: 25, role: raised, text: Add Pull 1}
+  type: Button
+- event_bindings: {}
+  layout_properties: {grid_position: 'TCWSKA,VRKMBE'}
+  name: add_pull_2_button
+  properties: {bold: true, font_size: 25, role: raised, text: Add Pull 2}
+  type: Button
+- event_bindings: {click: add_legs_1_button_click}
+  layout_properties: {grid_position: 'ALBSCE,YPYJEZ'}
+  name: add_legs_1_button
+  properties: {bold: true, font_size: 25, role: raised, text: Add Legs 1}
+  type: Button
+- event_bindings: {}
+  layout_properties: {grid_position: 'ALBSCE,IXUVYT'}
+  name: add_legs_2_button
+  properties: {bold: true, font_size: 25, role: raised, text: Add Legs 2}
+  type: Button
+container: {type: ColumnPanel}
+is_package: true
