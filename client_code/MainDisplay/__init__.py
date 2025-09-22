@@ -208,3 +208,4 @@ class MainDisplay(MainDisplayTemplate):
     """This method is called when the button is clicked"""
     asw_form = AddStdWorkoutForm(md=self)
     alert(title="Add Workout Template", content=asw_form, large=True, buttons=[])
+    

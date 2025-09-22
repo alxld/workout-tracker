@@ -16,6 +16,7 @@ class AddStdWorkoutForm(AddStdWorkoutFormTemplate):
     self.md.add_exercise_button_click(body_part='Chest', exercise='DB Incline Fly')
     self.md.add_exercise_button_click(body_part='Arms', exercise='DB Skull Crushers')
     self.md.add_exercise_button_click(body_part='Arms', exercise='Cable Tricep Push')
+    self.close()
 
   def add_pull_1_button_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -23,6 +24,7 @@ class AddStdWorkoutForm(AddStdWorkoutFormTemplate):
     self.md.add_exercise_button_click(body_part='Back', exercise='Narrow Seated Row')
     self.md.add_exercise_button_click(body_part='Arms', exercise='Hammer Curl')
     self.md.add_exercise_button_click(body_part='Back', exercise='Seated Reverse DB Fly')
+    self.close()
 
   def add_legs_1_button_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -30,6 +32,7 @@ class AddStdWorkoutForm(AddStdWorkoutFormTemplate):
     self.md.add_exercise_button_click(body_part='Hamstrings', exercise='DB Romanian Deadlift')
     self.md.add_exercise_button_click(body_part='Core', exercise='Plank')
     self.md.add_exercise_button_click(body_part='Core', exercise='DB Suitcase Carry Uneven')
+    self.close()
 
   def add_push_2_button_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -37,7 +40,7 @@ class AddStdWorkoutForm(AddStdWorkoutFormTemplate):
     self.md.add_exercise_button_click(body_part='Chest', exercise='DB Decline Press')
     self.md.add_exercise_button_click(body_part='Shoulders', exercise='Shoulder Press')
     self.md.add_exercise_button_click(body_part='Shoulders', exercise='DB Front/Side Raises')
-
+    self.close()
   def add_pull_2_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.md.add_exercise_button_click(body_part='Back', exercise='Bent Row')
